@@ -1,0 +1,371 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Lib\Sessao;
+
+class ContatoController extends Controller {
+
+    public function index() {
+        $this->validaAdministrador();
+
+        $this->redirect('contato/listar');
+    }
+
+    public function cadastro() {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $css = '
+                <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
+                <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >    
+        ';
+
+        $js = '
+            <script src="' . JSTEMPLATE . 'switchery/switchery.min.js"></script>
+            <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>
+            <script src="' . JSTEMPLATE . 'jquery.mask.js"></script>
+        ';
+
+        $this->render('contato/cadastro', "Cadastro", $css, $js, 1);
+    }
+
+    public function inserir() {
+        
+        $bo = new \App\Models\BO\ContatoBO();
+        $vetor = $_REQUEST;
+        $dados = array();
+        $campus = \App\Models\Entidades\Contato::CAMPOS;
+
+        Sessao::gravaFormulario($vetor);
+
+        $vetor['status'] = 2;
+
+        foreach ($vetor as $indice => $valor) {
+            if (in_array($indice, $campus)) {
+                if ($vetor[$indice] == '') {
+                    $dados[$indice] = "null";
+                } else {
+                    $dados[$indice] = $vetor[$indice];
+                }
+            }
+        }
+
+        $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
+
+
+
+        if ($id == FALSE) {
+            if (!Sessao::existeMensagem()) {
+                Sessao::gravaMensagem("Erro", "Verifique todos os campos e tente novamente", 2);
+            }
+
+            $this->redirect('contato/cadastro');
+        } else {
+
+
+            $x = '';
+            foreach ($dados as $indice => $value) {
+                if ($value != "null") {
+                    $x .= "campo " . \App\Models\Entidades\Contato::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
+                }
+            }
+            $info = [
+                'tipo' => 1,
+                'administrador' => Sessao::getAdministrador('id'),
+                'campos' => $x,
+                'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
+                'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou o cadastro de um novo Contato'
+            ];
+
+            $this->inserirAuditoria($info);
+
+            Sessao::limpaFormulario();
+            Sessao::gravaMensagem("Contato inserido", "Sucesso", 1);
+
+            $this->redirect('contato/listar/');
+        }
+    }
+
+    public function listar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $css = '
+         
+        ';
+
+        $js = '
+            <script src="' . JSTEMPLATE . 'bootstrap-confirmation/bootstrap-confirmation.min.js"></script>
+        ';
+
+        $bo = new \App\Models\BO\ContatoBO();
+
+        if (!is_numeric($parametro[0])) {
+            $this->redirect('contato/listar/1/' . $parametro[0]);
+        }
+        $p = (isset($parametro[0]) or is_numeric($parametro[0])) ? $parametro[0] : 1;
+        $busca = (isset($parametro[1])) ? $parametro[1] : null;
+
+        $quantidade = 10;
+        $pagina = $p * $quantidade - $quantidade;
+
+        $condicao = "status <> ?";
+        $valoresCondicao = [0];
+
+        if ($busca) {
+            $condicao .= " and nome like '%?%'";
+            array_push($valoresCondicao, "$busca");
+        }
+
+        $orderBy = "nome asc";
+
+        $tabela = \App\Models\Entidades\Contato::TABELA['nome'];
+
+        $resultado = $bo->listarVetor($tabela, ["*"], $quantidade, $pagina, $condicao, $valoresCondicao, $orderBy);
+
+        $this->setViewParam('contato', $resultado);
+
+        $quanContato = $bo->selecionar($tabela, ["count(id) as id"], $condicao, $valoresCondicao, $orderBy);
+
+        $quanPaginas = ceil($quanContato->getId() / $quantidade);
+
+        if ($p > $quanPaginas and $p != 1) {
+            Sessao::gravaMensagem("Falha", "Página não encontrada", 2);
+            $this->redirect('contato/listar');
+        }
+
+        if ($p < 5) {
+            $i = 0;
+            $fim = $quanPaginas < 5 ? $quanPaginas : 5;
+        } else {
+            if ($p < $quanPaginas - 2) {
+                $i = $p - 3;
+                $fim = $p + 2;
+            } else {
+                $i = $quanPaginas - 5;
+                $fim = $quanPaginas;
+            }
+        }
+
+        $paginacao = array(
+            'quanContato' => $quanContato->getId(),
+            'quanPaginas' => $quanPaginas,
+            'inicio' => $i,
+            'fim' => $fim,
+            'pagina' => $p,
+            'anterior' => $p - 1,
+            'proxima' => $p + 1,
+            'busca' => $busca
+        );
+
+        $this->setViewParam('paginacao', $paginacao);
+
+        if ($quanContato->getId() < 1) {
+            Sessao::gravaMensagem('', 'Nenhum registro encontrado!', 2);
+        }
+
+        $this->render('contato/listar', "Listagem", $css, $js, 1);
+    }
+
+    public function excluir($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(1);
+
+        $id = $parametro[0];
+        $status = $parametro[1];
+
+        if (is_numeric($id) and is_numeric($status)) {
+            $bo = new \App\Models\BO\ContatoBO();
+            $tabela = \App\Models\Entidades\Contato::TABELA['nome'];
+            $dados = [
+                'status' => $status
+            ];
+            $condicao = "id = ?";
+            $valorCondicao = [$id];
+            $quantidade = 1;
+            $validacao = \App\Models\Entidades\Contato::CAMPOSINFO;
+
+            $resposta = $bo->editar($tabela, $dados, $condicao, $valorCondicao, $quantidade, $validacao);
+
+
+            if ($resposta) {
+                Sessao::gravaMensagem("Sucesso", "Contato excluido", 1);
+                $info = [
+                    'tipo' => 3,
+                    'administrador' => Sessao::getAdministrador('id'),
+                    'campos' => "campo " . \App\Models\Entidades\Contato::CAMPOSINFO["status"]['descricao'] . ": Excluido",
+                    'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
+                    'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a exclusão do contato"' . $resposta['nome'] . '".'
+                ];
+
+                $this->inserirAuditoria($info);
+            } else {
+                if (!Sessao::existeMensagem()) {
+                    Sessao::gravaMensagem("Falha", "Contato não excluído!", 2);
+                }
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+        }
+
+        $this->redirect('contato/listar');
+    }
+
+    public function visualizar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+
+            $bo = new \App\Models\BO\ContatoBO();
+
+            $tabela = \App\Models\Entidades\Contato::TABELA['nome'];
+            $bo->editar($tabela, ['status' => 1], "id = ?", [$id], 1, \App\Models\Entidades\Contato::CAMPOSINFO);
+            $contato = $bo->selecionarVetor($tabela, ['*'], "id = ?", [$id], null);
+
+            if ($contato) {
+                $css = '';
+                $js = '';
+                
+                                
+                $this->setViewParam('item', $contato);
+                $this->render('contato/visualizar', $contato['nome'], $css, $js, 1);
+            } else {
+                Sessao::gravaMensagem("Falha", "Contato não encontrado", 2);
+                $this->redirect('contato/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+            $this->redirect('contato/listar');
+        }
+    }
+
+    public function editar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+
+            $bo = new \App\Models\BO\ContatoBO();
+            $contato = $bo->selecionarVetor(\App\Models\Entidades\Contato::TABELA['nome'], ['*'], "id = ?", [$id], null);
+
+            if ($contato) {
+                $css = '
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >
+                ';
+
+                $js = '
+                    <script src="' . JSTEMPLATE . 'switchery/switchery.min.js"></script>
+                    <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>
+                    <script src="' . JSTEMPLATE . 'jquery.mask.js"></script>
+               ';
+
+                $this->setViewParam('item', $contato);
+
+                $this->render('contato/editar', $contato['nome'], $css, $js, 1);
+            } else {
+                Sessao::gravaMensagem("Falha", "Contato não encontrado", 2);
+                $this->redirect('contato/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem  ao esperado", 3);
+            $this->redirect('contato/listar');
+        }
+    }
+
+    public function salvar() {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+        $id = $_POST['contato'];
+
+        if (is_numeric($id)) {
+            $bo = new \App\Models\BO\ContatoBO();
+
+            $vetor = $_POST;
+
+            $dados = array();
+            $campus = \App\Models\Entidades\Contato::CAMPOS;
+
+            if ($vetor['status'] == "on") {
+                $vetor['status'] = 1;
+            } else {
+                $vetor['status'] = 2;
+            }
+
+            foreach ($vetor as $indice => $valor) {
+                if (in_array($indice, $campus)) {
+                    if ($vetor[$indice] == '') {
+                        $dados[$indice] = "null";
+                    } else {
+                        $dados[$indice] = $vetor[$indice];
+                    }
+                }
+            }
+
+            $resultado = $bo->editar(\App\Models\Entidades\Contato::TABELA['nome'], $dados, "id = ?", [$id], 1, \App\Models\Entidades\Contato::CAMPOSINFO);
+
+            if (Sessao::existeMensagem() or $resultado == FALSE) {
+                if (!Sessao::existeMensagem()) {
+                    Sessao::gravaMensagem($vetor['descricao'], "Contato sem edição", 2);
+                }
+
+                $this->redirect('contato/listar');
+            } else {
+                $x = '';
+
+                foreach ($dados as $indice => $value) {
+                    if ($value == 'null') {
+                        $value = '';
+                    }
+
+                    if ($resultado[$indice] != $value) {
+                        $x .= "campo " . \App\Models\Entidades\Contato::CAMPOSINFO[$indice]['descricao'] . ' editado de: "' . $resultado[$indice] . '" para "' . $value . '"<br>';
+                    }
+                }
+
+                $info = [
+                    'tipo' => 2,
+                    'administrador' => Sessao::getAdministrador('id'),
+                    'campos' => $x,
+                    'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
+                    'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a edição das informações de um Contato.'
+                ];
+
+                $this->inserirAuditoria($info);
+
+                Sessao::gravaMensagem("Sucesso", "Contato, editado", 1);
+
+                $this->redirect('contato/visualizar/' . $id);
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+        }
+
+        $this->redirect('contato/listar');
+    }
+
+    public function status($status) {
+        switch ($status) {
+            case 1:
+                return 'Lido';
+                break;
+            case 2:
+                return 'Não Lido';
+                break;
+            case 0:
+                return 'Excluido';
+                break;
+
+            default:
+                return 'Outros';
+                break;
+        }
+    }
+
+}
