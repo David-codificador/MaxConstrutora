@@ -1,7 +1,7 @@
 <!doctype html>
 
 
-<html lang="en" class="no-js">
+<html lang="pt-br" class="no-js">
     <head>
         <title><?= TITLESITE ?> <?= $titulo ?></title>
 
@@ -28,5 +28,7 @@
 
 
     </head>
+    <body>
     <input type="hidden" id="link" value="<?= LINK ?>" />
     <input type="hidden" id="recurso" value="<?= RECURSO ?>" />
+    

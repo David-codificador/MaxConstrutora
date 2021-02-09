@@ -7,7 +7,7 @@
                 <!-- SLIDE  -->
                 <li data-index="rs-688" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="Construção" data-param1="01" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="<?= IMAGEMSITE ?>/banners/baner01.jpeg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
+                    <img src="<?= IMAGEMSITE ?>/banners/banner01.png" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
 
                     <!-- LAYER NR. 1 -->
@@ -38,7 +38,7 @@
                 <!-- SLIDE  -->
                 <li data-index="rs-689" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="Rede Pluvial" data-param1="02" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="upload/slide/2.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
+                    <img src="<?= IMAGEMSITE ?>/banners/banner02.jpeg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
 
                     <!-- LAYER NR. 1 -->
@@ -69,7 +69,7 @@
                 <!-- SLIDE  -->
                 <li data-index="rs-690" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="construct" data-param1="03" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="upload/slide/3.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
+                    <img src="<?= IMAGEMSITE ?>/banners/banner03.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
 
                     <!-- LAYER NR. 1 -->
@@ -108,7 +108,7 @@
 <!-- banner-section -->
 <section class="banner-section">
     <div class="container">
-        <h2>All You Need for building Creative &amp; Professional<a href="projects.html" class="button-one">click here</a></h2>
+        <h2>Maxx Construtora, conheça a nossa história<a href="projects.html" class="button-one">Clique Aqui!</a></h2>
     </div>
 </section>
 <!-- End banner section -->

@@ -1,4 +1,4 @@
-<body>
+
     <!-- Container -->
     <div id="container">
         <!-- Header
@@ -15,14 +15,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="<?= IMAGEMSITE ?>logo.png" alt=""></a>
+                        <a class="navbar-brand" href="<?= LINK ?>home/index"><img src="<?= IMAGEMSITE ?>logo.png" alt=""></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="index.html">INÍCIO</a></li>
-                            <li><a href="index.html">SOBRE NÓS</a></li>
+                            <li><a href="<?= LINK ?>home/index">INÍCIO</a></li>
+                            <li><a href="<?= LINK ?>home/sobre"">SOBRE NÓS</a></li>
                             <li class="drop"><a href="projects.html">SERVIÇOS</a>
                                 <ul class="dropdown">
                                     <li><a href="projects-2col.html">Projects 2 Colums</a></li>

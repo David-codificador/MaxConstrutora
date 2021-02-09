@@ -12,5 +12,19 @@ class HomeController extends Controller {
 
         $this->render("home/index", "Início", $css, $js, 3);
     }
+    
+    public function sobre() {
+        $css = null;
+        $js = null;
+
+        $this->render("home/sobre", "Sobre", $css, $js, 3);
+    }
+    
+    public function servicos() {
+        $css = null;
+        $js = null;
+
+        $this->render("home/sobre", "Sobre", $css, $js, 3);
+    }
 
 }
