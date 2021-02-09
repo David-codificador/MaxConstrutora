@@ -25,6 +25,7 @@
         <link rel="stylesheet" type="text/css" href="<?= CSSSITE ?>navigation.css">
 
         <link rel="stylesheet" type="text/css" href="<?= CSSSITE ?>style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="<?= CSSSITE ?>estilo.css" media="screen">
 
 
     </head>

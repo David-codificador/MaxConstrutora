@@ -83,6 +83,7 @@
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI&amp;sensor=false&amp;language=en" type="text/javascript"></script>
 <script type="text/javascript" src="<?=JSSITE?>gmap3.min.js"></script>
 <script type="text/javascript" src="<?=JSSITE?>script.js"></script>
+<script type="text/javascript" src="<?=JSSITE?>ini.js"></script>
 
 <!-- END REVOLUTION SLIDER -->
 <script type="text/javascript">
