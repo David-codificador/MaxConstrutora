@@ -121,8 +121,8 @@
             <div class="col-md-4">
                 <div class="offer-post">
                     <a href="construction.html"><img src="upload/others/1.jpg" alt=""></a>
-                    <h2><a href="construction.html"> <i class="fa fa-cubes"></i> Construction</a></h2>
-                    <p>A nice home deck provides a beautiful and relaxing spot for you and your family to enjoy the outdoors. Our professional handymen are ready to help you with all your deck repair and deck maintenance needs.</p>
+                    <h2><a href="construction.html"> <i class="fa fa-cubes"></i> Construção</a></h2>
+                    <p>A Maxx Construtora, leva a sério o seu compromissão com seus clientes, e se compromete em entregar seus serviços com qualidade.</p>
                 </div>
             </div>
             <div class="col-md-4">

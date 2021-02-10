@@ -1,11 +1,4 @@
-<!-- page-banner-section 
-                        ================================================== -->
-<section class="page-banner-section">
-    <div class="container">
-       
-    </div>
-</section>
-<!-- End page-banner section -->
+  <hr>
 
 <!-- comment --><!-- contact section 
                         ================================================== -->

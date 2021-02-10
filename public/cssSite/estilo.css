@@ -1,3 +1,5 @@
-.page-banner-section {
-    padding: 7px 7px !important;
+hr {
+    margin-top: 110px !important;
+    border: 2 !important;
+       border-top: 1px solid #b08408 !important;
 }

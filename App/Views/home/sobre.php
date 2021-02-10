@@ -1,13 +1,6 @@
-<section class="page-banner-section">
-    <div class="container">
-
-    </div>
-</section>
-<!-- End page-banner section -->
-
-<!-- about section 
-        ================================================== -->
+<hr>
 <section class="about-alternative-section">
+  
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -125,48 +118,3 @@
 </section>
 <!-- End about section -->
 
-<!-- team section 
-        ================================================== -->
-<section class="team-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="team-post">
-                    <img src="upload/team/1.jpg" alt="">
-                    <h2>John Smith</h2>
-                    <span>Company Menager</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="team-post">
-                    <img src="upload/team/4.jpg" alt="">
-                    <h2>Besim Dauti</h2>
-                    <span>Architect</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="team-post">
-                    <img src="upload/team/3.jpg" alt="">
-                    <h2>Alex Doe</h2>
-                    <span>Project Menager</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="team-post">
-                    <img src="upload/team/6.jpg" alt="">
-                    <h2>Hunejs Dauti</h2>
-                    <span>Building Worker</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End team section -->
