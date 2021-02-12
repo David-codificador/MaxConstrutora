@@ -14,7 +14,6 @@ class ContatoController extends Controller {
     }
 
     public function inserir() {
-     
 
         $bo = new \App\Models\BO\ContatoBO();
         $vetor = $_REQUEST;
@@ -34,18 +33,18 @@ class ContatoController extends Controller {
                 }
             }
         }
-        
-             
+
+
         $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
 
-        
+
 
         if ($id == FALSE) {
             Sessao::gravaMensagemSite("Mensagem não enviada!, Tente Novamente.");
 
             $this->redirect('contato');
         } else {
-        
+
 
             $x = '';
             foreach ($dados as $indice => $value) {
@@ -59,7 +58,7 @@ class ContatoController extends Controller {
                 'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
                 'descricao' => 'O Internauta efetuou o cadastro de um novo Contato'
             ];
-            
+
             $this->inserirAuditoria($info);
 
             Sessao::limpaFormulario();
@@ -330,6 +329,73 @@ class ContatoController extends Controller {
         }
 
         $this->redirect('contato/listar');
+    }
+
+    public function inserirAjax() {
+
+        $bo = new \App\Models\BO\ContatoBO();
+        $vetor = $_REQUEST;
+        $dados = array();
+        $campus = \App\Models\Entidades\Contato::CAMPOS;
+
+        $vetor['status'] = 2;
+
+        foreach ($vetor as $indice => $valor) {
+            if (in_array($indice, $campus)) {
+                if ($vetor[$indice] == '') {
+                    $dados[$indice] = "null";
+                } else {
+                    $dados[$indice] = $vetor[$indice];
+                }
+            }
+        }
+
+
+        $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
+
+
+
+        if ($id == FALSE) {
+
+            if (!Sessao::existeMensagemSite()) {
+                $retorno = [
+                    'status' => '0',
+                    'msg' => 'Verifique todos os campos e tente novamente'
+                ];
+            } else {
+                $retorno = [
+                    'status' => '0',
+                    'msg' => Sessao::retornaMensagemSite()
+                ];
+                Sessao::limpaMensagemSite();
+            }
+
+            echo json_encode($retorno);
+        } else {
+
+
+            $x = '';
+            foreach ($dados as $indice => $value) {
+                if ($value != "null") {
+                    $x .= "campo " . \App\Models\Entidades\Contato::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
+                }
+            }
+            $info = [
+                'tipo' => 1,
+                'campos' => $x,
+                'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
+                'descricao' => 'O Internauta efetuou o cadastro de um novo Contato'
+            ];
+
+            $this->inserirAuditoria($info);
+
+            $retorno = [
+                'status' => '1',
+                'msg' => "Contato Enviado!"
+            ];
+
+            echo json_encode($retorno);
+        }
     }
 
     public function status($status) {

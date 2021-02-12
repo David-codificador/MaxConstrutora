@@ -14,7 +14,7 @@ class App {
     public  $controllerName;
 
     public function __construct() {
-        define('TITLESITE',          "Max");
+        define('TITLESITE',          "Maxx");
         define('APP_HOST',           $_SERVER['HTTP_HOST'] . "/MaxConstrutora");
         define('PATH',               realpath('./'));
         define('LINK',               'http://' . APP_HOST . '/');

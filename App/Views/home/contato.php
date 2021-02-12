@@ -7,7 +7,7 @@
         <div class="col-md-4">
             <div class="contact-info">
                 <h2>Informações de contato</h2>
-                <p>Entre em contato conosco, e retornaremos o mais breve possível.</p>
+                <p>Entre em contato conosco!. Retornaremos o mais breve possível.</p>
                 <ul class="information-list">
                     <li><i class="fa fa-map-marker"></i><span>Ceres-GO</span></li>
                     <li><i class="fa fa-whatsapp"></i><span>(62) 98475- 5437 </span><span>(62) 99623 - 5304</span></li>
@@ -16,8 +16,8 @@
             </div>
         </div>
         <div class="col-md-8">
-            <form id="contact-form" method="POST" action="<?=LINK?>contato/inserir">
-                <h2>Send us a message</h2>
+            <form id="contact-form" method="POST">
+                <h2>ENVIE-NOS UMA MENSAGEM</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <input name="nome" id="nome" type="text" placeholder="Nome">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <textarea name="assunto" id="assunto" placeholder="Assunto"></textarea>
-                <input type="submit" id="submit_contact" value="Enviar Mensagem">
+                <input type="submit" onclick="enviarContato()" id="submit_contact" value="Enviar Mensagem">
                 <div id="msg" class="message"></div>
             </form>
         </div>
