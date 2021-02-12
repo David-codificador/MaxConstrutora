@@ -108,7 +108,7 @@
 <!-- banner-section -->
 <section class="banner-section">
     <div class="container">
-        <h2>Maxx Construtora, conheça a nossa história<a href="projects.html" class="button-one">Clique Aqui!</a></h2>
+        <h2>Maxx Construtora, conheça mais sobre os nossos seguimentos de serviços!<a href="<?= LINK ?>servicos" class="button-one">Clique Aqui!</a></h2>
     </div>
 </section>
 <!-- End banner section -->
