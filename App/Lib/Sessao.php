@@ -43,8 +43,8 @@ class Sessao {
     public static function retornaMensagem() {
         return ($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '';
     }
-    
-      public static function retornaTitulo() {
+
+    public static function retornaTitulo() {
         return ($_SESSION['titulo']) ? $_SESSION['titulo'] : '';
     }
 
@@ -57,12 +57,28 @@ class Sessao {
         unset($_SESSION['titulo']);
         unset($_SESSION['tipo']);
     }
-    
-      public static function existeMensagem() {
-         return isset($_SESSION['mensagem']) and $_SESSION['mensagem']  ? false : true;
+
+    public static function existeMensagem() {
+        return isset($_SESSION['mensagem']) and $_SESSION['mensagem'] ? false : true;
     }
-    
-    
+
+    public static function gravaMensagemSite($mensagem) {
+
+        $_SESSION['mensagemSite'] = $mensagem;
+    }
+
+    public static function retornaMensagemSite() {
+        return ($_SESSION['mensagemSite']) ? $_SESSION['mensagemSite'] : '';
+    }
+
+    public static function limpaMensagemSite() {
+        unset($_SESSION['mensagemSite']);
+    }
+
+    public static function existeMensagemSite() { 
+        return isset($_SESSION['mensagemSite']) and $_SESSION['mensagemSite'] != '' ? true : false;
+    }
+
     public static function gravaFormulario($form) {
         $_SESSION['form'] = $form;
     }
@@ -74,4 +90,5 @@ class Sessao {
     public static function limpaFormulario() {
         unset($_SESSION['form']);
     }
+
 }

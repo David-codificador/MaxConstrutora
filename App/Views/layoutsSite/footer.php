@@ -183,11 +183,11 @@
 
 <script>
 <?php
-if ($Sessao::retornaMensagem() != '') {
+if ($Sessao::existeMensagemSite()) {
     ?>
-        alert("<?= $Sessao::retornaMensagem() ?>");
+        alert("<?= $Sessao::retornaMensagemSite() ?>");
     <?php
-    $Sessao::limpaMensagem();
+    $Sessao::limpaMensagemSite();
 }
 ?>
 </script>

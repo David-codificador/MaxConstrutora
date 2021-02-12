@@ -15,17 +15,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= LINK ?>home/index"><img src="<?= IMAGEMSITE ?>logo.png" alt=""></a>
+                    <a class="navbar-brand" href="<?= LINK ?>"><img src="<?= IMAGEMSITE ?>logo.png" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?= LINK ?>home/index">INÍCIO</a></li>
-                        <li><a href="<?= LINK ?>home/sobre">SOBRE NÓS</a></li>
-                        <li><a href="<?= LINK ?>home/servicos">SERVIÇOS</a></li>
-                        <li><a href="<?= LINK ?>home/obras">OBRAS</a></li>  
-                        <li><a href="<?= LINK ?>home/contato">CONTATO</a></li>  
+                        <li><a href="<?= LINK ?>">INÍCIO</a></li>
+                        <li><a href="<?= LINK ?>sobre">SOBRE NÓS</a></li>
+                        <li><a href="<?= LINK ?>servicos">SERVIÇOS</a></li>
+                        <li><a href="<?= LINK ?>obras">OBRAS</a></li>  
+                        <li><a href="<?= LINK ?>contato">CONTATO</a></li>  
                         <li class="search drop"><a href="#" class="open-search"><i class="fa fa-search"></i></a>
                             <form class="form-search">
                                 <input type="search" placeholder="Search:"/>

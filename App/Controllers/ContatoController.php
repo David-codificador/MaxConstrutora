@@ -7,31 +7,15 @@ use App\Lib\Sessao;
 class ContatoController extends Controller {
 
     public function index() {
-        $this->validaAdministrador();
+        $css = null;
+        $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
 
-        $this->redirect('contato/listar');
-    }
-
-    public function cadastro() {
-        $this->validaAdministrador();
-        $this->nivelAcesso(2);
-
-        $css = '
-                <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
-                <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >    
-        ';
-
-        $js = '
-            <script src="' . JSTEMPLATE . 'switchery/switchery.min.js"></script>
-            <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>
-            <script src="' . JSTEMPLATE . 'jquery.mask.js"></script>
-        ';
-
-        $this->render('contato/cadastro', "Cadastro", $css, $js, 1);
+        $this->render("home/contato", "Contato", $css, $js, 3);
     }
 
     public function inserir() {
-        
+     
+
         $bo = new \App\Models\BO\ContatoBO();
         $vetor = $_REQUEST;
         $dados = array();
@@ -50,19 +34,18 @@ class ContatoController extends Controller {
                 }
             }
         }
-
+        
+             
         $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
 
-
+        
 
         if ($id == FALSE) {
-            if (!Sessao::existeMensagem()) {
-                Sessao::gravaMensagem("Erro", "Verifique todos os campos e tente novamente", 2);
-            }
+            Sessao::gravaMensagemSite("Mensagem não enviada!, Tente Novamente.");
 
-            $this->redirect('contato/cadastro');
+            $this->redirect('contato');
         } else {
-
+        
 
             $x = '';
             foreach ($dados as $indice => $value) {
@@ -72,18 +55,17 @@ class ContatoController extends Controller {
             }
             $info = [
                 'tipo' => 1,
-                'administrador' => Sessao::getAdministrador('id'),
                 'campos' => $x,
                 'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
-                'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou o cadastro de um novo Contato'
+                'descricao' => 'O Internauta efetuou o cadastro de um novo Contato'
             ];
-
+            
             $this->inserirAuditoria($info);
 
             Sessao::limpaFormulario();
-            Sessao::gravaMensagem("Contato inserido", "Sucesso", 1);
+            Sessao::gravaMensagemSite("Contato enviado");
 
-            $this->redirect('contato/listar/');
+            $this->redirect('contato');
         }
     }
 
@@ -229,8 +211,8 @@ class ContatoController extends Controller {
             if ($contato) {
                 $css = '';
                 $js = '';
-                
-                                
+
+
                 $this->setViewParam('item', $contato);
                 $this->render('contato/visualizar', $contato['nome'], $css, $js, 1);
             } else {
