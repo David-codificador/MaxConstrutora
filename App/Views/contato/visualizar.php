@@ -61,7 +61,6 @@
                                     <div class="col-md-12">
                                         <div class="btn-group pull-right mt-10" role="group">
                                             <a href="<?= LINK ?>contato/listar" class="btn bg-gray btn-wide"><i class="fa fa-mail-reply"></i>Voltar</a>
-                                            <a href="<?= LINK ?>contato/editar/<?= $viewVar['item']['id'] ?>" class="btn bg-black btn-wide"><i class="fa fa-pencil"></i>Editar</a>
                                         </div>
                                     </div>
                                 </div>
