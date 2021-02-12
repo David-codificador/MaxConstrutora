@@ -83,8 +83,11 @@
 <script type="text/javascript" src="<?=JSSITE?>script.js"></script>
 <script type="text/javascript" src="<?=JSSITE?>ini.js"></script>
 
+<?= $js ?>
+<?= $arquivoJS ?>
 <!-- END REVOLUTION SLIDER -->
 <script type="text/javascript">
+    
     var tpj = jQuery;
 
     var revapi206;

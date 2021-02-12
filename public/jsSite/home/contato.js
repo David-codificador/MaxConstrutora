@@ -21,4 +21,3 @@ function enviarContato() {
                alert(dados.msg)           
         }
     });
-}
