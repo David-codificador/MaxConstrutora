@@ -13,11 +13,14 @@ function enviarContato() {
         success: function (dados) {
             if (dados.status == '1') {
                alert(dados.msg);
-
+               $("#nome").val("");
+               $("#telefone").val("");
+               $("#email").val("");
+               $("#assunto").val("");
             } else {
                 alert(dados.msg);
                 }
-
-               alert(dados.msg)           
+              
         }
     });
+}

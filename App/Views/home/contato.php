@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <form id="contact-form" method="POST">
+            <div id="contact-form">
                 <h2>ENVIE-NOS UMA MENSAGEM</h2>
                 <div class="row">
                     <div class="col-md-12">
@@ -30,9 +30,9 @@
                     </div>
                 </div>
                 <textarea name="assunto" id="assunto" placeholder="Assunto"></textarea>
-                <input type="submit" onclick="enviarContato()" id="submit_contact" value="Enviar Mensagem">
-                <div id="msg" class="message"></div>
-            </form>
+                <input type="button" onclick="enviarContato()" id="btn_inserir" value="Enviar Mensagem">
+               <!-- <div id="msg" class="message"></div>-->
+            </div>
         </div>
     </div>
 </section>

@@ -33,7 +33,6 @@ abstract class Controller {
             if (file_exists("./public/js/" . $view . ".js")) {
                 $arquivoJS .= '<script src="' . JS . $view . '.js"></script>';
             }
-
             require_once PATH . '/App/Views/layouts/header.php';
 
             if ($menu == 1) {

@@ -17,7 +17,7 @@ class Sessao {
     }
 
     public static function logadoAdministrador() {
-        return ($_SESSION['logadoAdministrador']) ? $_SESSION['logadoAdministrador'] : false;
+        return isset($_SESSION['logadoAdministrador']) and isset($_SESSION['logadoAdministrador']) ? $_SESSION['logadoAdministrador'] : false;
     }
 
     public static function gravaMensagem($mensagem, $titulo = '', $tipo = 1) {

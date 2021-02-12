@@ -1,0 +1,18 @@
+#btn_inserir{
+    padding: 12px 30px;
+    outline: none;
+    border: none;
+    background: #ffba00;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.contact-section ul.information-list li i {
+    line-height: 20px !important;
+}
