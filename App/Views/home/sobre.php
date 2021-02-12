@@ -6,9 +6,9 @@
             <div class="col-md-8">
                 <div class="second-article">
                     <img src="upload/others/3.jpg" alt="">
-                    <h2>Who we are</h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt</p>
+                    <h2>QUEM NÓS SOMOS</h2>
+                    <p>A empresa Maxx Construtora foi funda em 2010,... seu fundador foi Maxuel Seabra, e desde então...</p>
+                    <p>Excelencia e Compromisso...</p>
                 </div>
             </div>   
             <div class="col-md-4">
@@ -16,13 +16,13 @@
                 <div class="tab-posts-box">
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active">
-                            <a href="#option1" data-toggle="tab">Building</a>
+                            <a href="#option1" data-toggle="tab">NOSSA MISSÃO</a>
                         </li>
                         <li>
-                            <a href="#option2" data-toggle="tab">Renovation</a>
+                            <a href="#option2" data-toggle="tab">VISÃO</a>
                         </li>
                         <li>
-                            <a href="#option3" data-toggle="tab">Energy</a>
+                            <a href="#option3" data-toggle="tab">VALORES</a>
                         </li>
                     </ul>
 
@@ -30,17 +30,17 @@
                         <div class="tab-pane active" id="option1">
                             <img src="upload/others/1.jpg" alt="">
 
-                            <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            <p>Construir e realizar obras com qualidade, em parceria com fornecedores e colaboradores, tendo como objetivo a satisfação do cliente.</p>
                         </div>
                         <div class="tab-pane" id="option2">
                             <img src="upload/others/2.jpg" alt="">
 
-                            <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            <p>Ser referência nacional no segmento de construção civil.</p>
                         </div>
                         <div class="tab-pane" id="option3">
                             <img src="upload/others/3.jpg" alt="">
 
-                            <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            <p>Qualidade: Total. Cliente: Satisfeito. Integridade em tudo que faz. Confiabilidade na empresa, nos clientes, nos colaboradores, nos fornecedores.</p>
 
                         </div>
                     </div>
