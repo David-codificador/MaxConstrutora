@@ -3,8 +3,7 @@
 namespace App\Controllers;
 
 use App\Lib\Sessao;
-use App\Models\BO\BannerBO;
-use App\Models\Entidades\Banner;
+
 use App\Models\Entidades\Canvas;
 
 class BannerController extends Controller {
@@ -17,75 +16,129 @@ class BannerController extends Controller {
 
     public function cadastro() {
         $this->validaAdministrador();
-        $this->nivelAcesso(9);
+        $this->nivelAcesso(2);
 
         $css = '
-            <link rel="stylesheet" href="' . CSS . 'bootstrap.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'font-awesome.min.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'animate-css/animate.min.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'lobipanel/lobipanel.min.css" media="screen" >
-
-            <link rel="stylesheet" href="' . CSS . 'prism/prism.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . '/switchery/switchery.min.css" >
-            <link rel="stylesheet" href="' . CSS . '/select2/select2.min.css" >
-
-            <link rel="stylesheet" href="' . CSS . 'main.css" media="screen" >
+            <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
+            <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >
         ';
 
         $js = '
-            <script src="' . JS . 'jquery/jquery-2.2.4.min.js"></script>
-            <script src="' . JS . 'jquery-ui/jquery-ui.min.js"></script>
-            <script src="' . JS . 'bootstrap/bootstrap.min.js"></script>
-            <script src="' . JS . 'pace/pace.min.js"></script>
-            <script src="' . JS . 'lobipanel/lobipanel.min.js"></script>
-            <script src="' . JS . 'iscroll/iscroll.js"></script>
-            <script src="' . JS . 'jquery.mask.js"></script>
+            <script src="' . JSTEMPLATE . 'switchery/switchery.min.js"></script>
+            <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>
 
-            <script src="' . JS . 'prism/prism.js"></script>
-            <script src="' . JS . 'switchery/switchery.min.js"></script>
-            <script src="' . JS . 'select2/select2.min.js"></script>
-
-            <script src="' . JS . 'main.js"></script>
         ';
 
         $this->render("banner/cadastro", "Cadastro de banner", $css, $js, 1);
         Sessao::limpaFormulario();
     }
+    
+      public function inserir() {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
 
+        $bo = new \App\Models\BO\BannerBO();
+        $vetor = $_POST;
+        $dados = array();
+        $campus = \App\Models\Entidades\Banner::CAMPOS;
+
+        Sessao::gravaFormulario($vetor);
+           if ($vetor['status'] == "on") {
+            $vetor['status'] = 1;
+        } else {
+            $vetor['status'] = 2;
+        }
+        
+        foreach ($vetor as $indice => $valor) {
+            if (in_array($indice, $campus)) {
+                if ($vetor[$indice] == '') {
+                    $dados[$indice] = "null";
+                } else {
+                    $dados[$indice] = $vetor[$indice];
+                }
+            }
+        }
+ 
+        $dados['administrador_id'] = Sessao::getAdministrador('id');
+
+        if ($_FILES["imagem"]["name"] != "") {
+            $tmp_nome = $_FILES["imagem"]['tmp_name'];
+            $nome_envio = $_FILES["imagem"]['name'];
+
+            $ext = strtolower(strrchr($nome_envio, "."));
+
+            $nome = date('d_m_Y_h_i_s') . "_" . rand(111, 222) . $ext;
+
+            //Fazer o Upload
+            move_uploaded_file($tmp_nome, './public/imagemSite/banners/' . $nome);
+            if (file_exists('./public/imagemSite/banners/' . $nome)) {
+
+                $img = new Canvas();
+
+                $img->carrega('./public/imagemSite/banners/' . $nome)
+                        ->hexa('#FFFFFF')
+                        ->redimensiona(1920, 780, 'preenchimento')
+                        ->grava('./public/imagemSite/banners/' . $nome, 80);
+
+                $dados['imagem'] = $nome;
+            } else {
+                Sessao::gravaMensagem("Falha ao enviar Baner Rotativo", "Baner Rotativo não enviada", 2);
+                $this->redirect('banner/cadastro');
+            }
+        } else {
+            Sessao::gravaMensagem("Falha ao enviar foto", "Imagem não enviada", 2);
+            $this->redirect('banner/cadastro');
+        }
+
+        $id = $bo->inserir(\App\Models\Entidades\Banner::TABELA['nome'], $dados, \App\Models\Entidades\Banner::CAMPOSINFO, true);
+        
+     
+        if ($id == FALSE) {
+            if (!Sessao::existeMensagem()) {
+                Sessao::gravaMensagem("Falha", "Verifique todos os campos e tente novamente", 2);
+            }
+
+            $this->redirect('banner/cadastro');
+        } else {
+
+            unset($dados['administrador_id']);
+            unset($dados['imagem']);
+
+            $x = '';
+            foreach ($dados as $indice => $value) {
+                if ($value != "null") {
+                    $x .= "campo " . \App\Models\Entidades\Banner::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
+                }
+            }
+
+            $x .= '<img src="' . IMAGEMSITE . 'banners/' . $nome . '" style="width: 100%">';
+
+
+            $info = [
+                'tipo' => 1,
+                'administrador' => Sessao::getAdministrador('id'),
+                'campos' => $x,
+                'tabela' => \App\Models\Entidades\Banner::TABELA['descricao'],
+                'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou o cadastro de um novo banner(a).'
+            ];
+
+            $this->inserirAuditoria($info);
+
+            Sessao::limpaFormulario();
+            Sessao::gravaMensagem("Sucesso", "Baner Rotativo inserido", 1);
+
+            $this->redirect('banner/listar');
+        }
+    }
+    
     public function listar($parametro) {
         $this->validaAdministrador();
-        $this->nivelAcesso(9);
+        $this->nivelAcesso(2);
 
-        $css = '
-            <link rel="stylesheet" href="' . CSS . 'bootstrap.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'font-awesome.min.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'animate-css/animate.min.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'lobipanel/lobipanel.min.css" media="screen" >
-
-            <link rel="stylesheet" href="' . CSS . 'prism/prism.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'ladda/ladda-themeless.min.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'iziModal/iziModal.min.css" media="screen" >
-            <link rel="stylesheet" href="' . CSS . 'sweet-alert/sweetalert.css" media="screen" >
-
-            <link rel="stylesheet" href="' . CSS . 'main.css" media="screen" >
-        ';
-
-        $js = '
-      <script src="' . JS . 'jquery/jquery-2.2.4.min.js"></script>
-            <script src="' . JS . 'jquery-ui/jquery-ui.min.js"></script>
-            <script src="' . JS . 'bootstrap/bootstrap.min.js"></script>
-            <script src="' . JS . 'pace/pace.min.js"></script>
-            <script src="' . JS . 'lobipanel/lobipanel.min.js"></script>
-            <script src="' . JS . 'iscroll/iscroll.js"></script>
-
-            <script src="' . JS . 'prism/prism.js"></script>
-            <script src="' . JS . 'iziModal/iziModal.min.js"></script>
-            <script src="' . JS . 'sweet-alert/sweetalert.min.js"></script>
-
-            <script src="' . JS . 'main.js"></script>
-        ';
-
-        $bo = new BannerBO();
+        $css = '';
+        $js = '';
+                
+        $bo = new \App\Models\BO\BannerBO();
 
         if (!is_numeric($parametro[0])) {
             $this->redirect('banner/listar/1/' . $parametro[0]);
@@ -106,7 +159,7 @@ class BannerController extends Controller {
 
         $orderBy = "id asc";
 
-        $tabela = Banner::TABELA['nome'];
+        $tabela = \App\Models\Entidades\Banner::TABELA['nome'];
 
         $resultado = $bo->listarVetor($tabela, ["*"], $quantidade, $pagina, $condicao, $valoresCondicao, $orderBy);
 
@@ -156,27 +209,27 @@ class BannerController extends Controller {
 
     public function excluir($parametro) {
         $this->validaAdministrador();
-        $this->nivelAcesso(9);
+        $this->nivelAcesso(2);
 
         $id = $parametro[0];
 
         if (is_numeric($id)) {
-            $bo = new BannerBO();
-            $tabela = Banner::TABELA['nome'];
+            $bo = new \App\Models\BO\BannerBO();
+            $tabela = \App\Models\Entidades\Banner::TABELA['nome'];
 
             $resposta = $bo->excluir($tabela, "id = ?", [$id], 1);
 
             if ($resposta) {
                 if ($resposta['imagem'] != 'padrao.jpg') {
-                    unlink('./public/imagemSite/banner/' . $resposta['imagem']);
+                    unlink('./public/imagemSite/banners/' . $resposta['imagem']);
                 }
                 Sessao::gravaMensagem("Sucesso", "Banner(a) excluido(a)", 1);
 
                 $info = [
-                    'tipo' => 4,
+                    'tipo' => 3,
                     'administrador' => Sessao::getAdministrador('id'),
                     'campos' => "-",
-                    'tabela' => Banner::TABELA['descricao'],
+                    'tabela' => \App\Models\Entidades\Banner::TABELA['descricao'],
                     'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a exclusão de um banner(a): ' . $resposta['nome']
                 ];
 
@@ -193,103 +246,11 @@ class BannerController extends Controller {
         $this->redirect('banner/listar');
     }
 
-    public function inserir() {
-        $this->validaAdministrador();
-        $this->nivelAcesso(9);
-
-        $bo = new BannerBO();
-        $vetor = $_POST;
-        $dados = array();
-        $campus = Banner::CAMPOS;
-
-        Sessao::gravaFormulario($vetor);
-
-        if ($vetor['texto_padrao'] == "on") {
-                $dados['texto_padrao'] = 1;
-            } else {
-                $dados['texto_padrao'] = 2;
-            }
-            
-         if ($vetor['status'] == "on") {
-                $dados['status'] = 1;
-            } else {
-                $dados['status'] = 2;
-            }
-            
-        $dados['administrador_id'] = Sessao::getAdministrador('id');
-
-        if ($_FILES["imagem"]["name"] != "") {
-            $tmp_nome = $_FILES["imagem"]['tmp_name'];
-            $nome_envio = $_FILES["imagem"]['name'];
-
-            $ext = strtolower(strrchr($nome_envio, "."));
-
-            $nome = date('d_m_Y_h_i_s') . "_" . rand(111, 999) . $ext;
-
-            //Fazer o Upload
-            move_uploaded_file($tmp_nome, './public/imagemSite/banner/' . $nome);
-            if (file_exists('./public/imagemSite/banner/' . $nome)) {
-
-                $img = new Canvas();
-
-                $img->carrega('./public/imagemSite/banner/' . $nome)
-                        ->hexa('#FFFFFF')
-                        ->redimensiona(1610, 490, 'preenchimento')
-                        ->grava('./public/imagemSite/banner/' . $nome, 80);
-
-                $dados['imagem'] = $nome;
-            } else {
-                Sessao::gravaMensagem("Falha ao enviar Baner Rotativo", "Baner Rotativo não enviada", 2);
-                $this->redirect('banner/cadastro');
-            }
-        } else {
-            Sessao::gravaMensagem("Falha ao enviar foto", "Imagem não enviada", 2);
-            $this->redirect('banner/cadastro');
-        }
-        
-        $id = $bo->inserir(Banner::TABELA['nome'], $dados, Banner::CAMPOSINFO);
-
-        if ($id == FALSE) {
-            if (!Sessao::existeMensagem()) {
-                Sessao::gravaMensagem("Falha", "Verifique todos os campos e tente novamente", 2);
-            }
-
-            $this->redirect('banner/cadastro');
-        } else {
-
-            unset($dados['administrador_id']);
-            unset($dados['imagem']);
-
-            $x = '';
-            foreach ($dados as $indice => $value) {
-                if ($value != "null") {
-                    $x .= "campo " . Banner::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
-                }
-            }
-            
-            $x .= '<img src="' . IMAGEMSITE . 'banner/' . $nome . '" style="width: 100%">';
-            
-
-            $info = [
-                'tipo' => 1,
-                'administrador' => Sessao::getAdministrador('id'),
-                'campos' => $x,
-                'tabela' => Banner::TABELA['descricao'],
-                'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou o cadastro de um novo banner(a).'
-            ];
-
-            $this->inserirAuditoria($info);
-
-            Sessao::limpaFormulario();
-            Sessao::gravaMensagem("Sucesso", "Baner Rotativo inserido", 1);
-
-            $this->redirect('banner/listar/');
-        }
-    }
+  
 
     public function salvar() {
         $this->validaAdministrador();
-        $this->nivelAcesso(9);
+        $this->nivelAcesso(2);
         $id = $_POST['banner'];
 
         if (is_numeric($id)) {
@@ -299,13 +260,13 @@ class BannerController extends Controller {
 
             $dados = array();
             $campus = Banner::CAMPOS;
-            
+
             if ($vetor['status'] == "on") {
                 $dados['status'] = 1;
             } else {
                 $dados['status'] = 2;
             }
-             
+
             if ($vetor['texto_padrao'] == "on") {
                 $dados['texto_padrao'] = 1;
             } else {
@@ -355,7 +316,7 @@ class BannerController extends Controller {
 
     public function editarImagem() {
         $this->validaAdministrador();
-        $this->nivelAcesso(9);
+        $this->nivelAcesso(2);
         $id = $_POST['id'];
 
         if (is_numeric($id)) {
@@ -365,7 +326,7 @@ class BannerController extends Controller {
 
                 $ext = strtolower(strrchr($nome_envio, "."));
 
-                $nome = date('d_m_Y_h_i_s') . "_" . rand(111, 999) . $ext;
+                $nome = date('d_m_Y_h_i_s') . "_" . rand(111, 222) . $ext;
 
                 //Fazer o Upload
                 move_uploaded_file($tmp_nome, './public/imagemSite/banner/' . $nome);
@@ -375,7 +336,7 @@ class BannerController extends Controller {
 
                     $img->carrega('./public/imagemSite/banner/' . $nome)
                             ->hexa('#FFFFFF')
-                            ->redimensiona(1610, 490, 'preenchimento')
+                            ->redimensiona(1610, 420, 'preenchimento')
                             ->grava('./public/imagemSite/banner/' . $nome, 80);
 
                     $dados['imagem'] = $nome;
@@ -424,7 +385,7 @@ class BannerController extends Controller {
 
     public function editar($parametro) {
         $this->validaAdministrador();
-        $this->nivelAcesso(9);
+        $this->nivelAcesso(2);
 
         $id = $parametro[0];
 
@@ -435,32 +396,32 @@ class BannerController extends Controller {
 
             if ($banner) {
                 $css = '
-                    <link rel="stylesheet" href="' . CSS . 'bootstrap.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSS . 'font-awesome.min.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSS . 'animate-css/animate.min.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSS . 'lobipanel/lobipanel.min.css" media="screen" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'bootstrap.css" media="screen" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'font-awesome.min.css" media="screen" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'animate-css/animate.min.css" media="screen" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'lobipanel/lobipanel.min.css" media="screen" >
 
-                    <link rel="stylesheet" href="' . CSS . 'prism/prism.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSS . '/switchery/switchery.min.css" >
-                    <link rel="stylesheet" href="' . CSS . '/select2/select2.min.css" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'prism/prism.css" media="screen" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >
 
-                    <link rel="stylesheet" href="' . CSS . 'main.css" media="screen" >
+                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'main.css" media="screen" >
                 ';
 
                 $js = '
-                    <script src="' . JS . 'jquery/jquery-2.2.4.min.js"></script>
-                    <script src="' . JS . 'jquery-ui/jquery-ui.min.js"></script>
-                    <script src="' . JS . 'bootstrap/bootstrap.min.js"></script>
-                    <script src="' . JS . 'pace/pace.min.js"></script>
-                    <script src="' . JS . 'lobipanel/lobipanel.min.js"></script>
-                    <script src="' . JS . 'iscroll/iscroll.js"></script>
+                    <script src="' . JSSITE . 'jquery/jquery-2.2.4.min.js"></script>
+                    <script src="' . JSSITE . 'jquery-ui/jquery-ui.min.js"></script>
+                    <script src="' . JSSITE . 'bootstrap/bootstrap.min.js"></script>
+                    <script src="' . JSSITE . 'pace/pace.min.js"></script>
+                    <script src="' . JSSITE . 'lobipanel/lobipanel.min.js"></script>
+                    <script src="' . JSSITE . 'iscroll/iscroll.js"></script>
 
-                    <script src="' . JS . 'prism/prism.js"></script>
-                    <script src="' . JS . 'switchery/switchery.min.js"></script>
-                    <script src="' . JS . 'select2/select2.min.js"></script>
-                    <script src="' . JS . 'jquery.mask.js"></script>
+                    <script src="' . JSSITE . 'prism/prism.js"></script>
+                    <script src="' . JSSITE . 'switchery/switchery.min.js"></script>
+                    <script src="' . JSSITE . 'select2/select2.min.js"></script>
+                    <script src="' . JSSITE . 'jquery.mask.js"></script>
 
-                    <script src="' . JS . 'main.js"></script>
+                    <script src="' . JSSITE . 'main.js"></script>
                 ';
 
                 $this->setViewParam('item', $banner);
