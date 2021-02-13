@@ -329,8 +329,8 @@ class BannerController extends Controller {
                 $nome = date('d_m_Y_h_i_s') . "_" . rand(111, 222) . $ext;
 
                 //Fazer o Upload
-                move_uploaded_file($tmp_nome, './public/imagemSite/banner/' . $nome);
-                if (file_exists('./public/imagemSite/banner/' . $nome)) {
+                move_uploaded_file($tmp_nome, './public/imagemSite/banners/' . $nome);
+                if (file_exists('./public/imagemSite/banners/' . $nome)) {
 
                     $img = new Canvas();
 

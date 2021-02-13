@@ -5,102 +5,47 @@
         <div id="rev_slider_206_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.1.1RC">
             <ul>
                 <!-- SLIDE  -->
-                <li data-index="rs-688" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="Construção" data-param1="01" data-description="">
-                    <!-- MAIN IMAGE -->
-                    <img src="<?= IMAGEMSITE ?>/banners/banner01.png" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
-                    <!-- LAYERS -->
+                <?php
+                foreach ($viewVar['banner'] as $item) {
+                    ?>
+                    <li data-index="rs-688" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="<?= $item['titulo'] ?>" data-param1="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="<?= IMAGEMSITE ?>/banners/<?= $item['imagem'] ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
 
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-tobggroup" id="slide-688-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-fontweight="['100','100','400','400']" data-width="full" data-height="full" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="opacity:0;s:1500;e:Power2.easeInOut;" data-transform_out="opacity:0;s:1500;e:Power2.easeInOut;s:1500;e:Power2.easeInOut;" data-start="150" data-basealign="slide" data-responsive_offset="off" data-responsive="off" style="z-index: 5;background-color:rgba(18, 12, 20, 0.6);border-color:rgba(0, 0, 0, 0);">
-                    </div>
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-tobggroup" id="slide-688-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-fontweight="['100','100','400','400']" data-width="full" data-height="full" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="opacity:0;s:1500;e:Power2.easeInOut;" data-transform_out="opacity:0;s:1500;e:Power2.easeInOut;s:1500;e:Power2.easeInOut;" data-start="150" data-basealign="slide" data-responsive_offset="off" data-responsive="off" style="z-index: 5;background-color:rgba(18, 12, 20, 0.6);border-color:rgba(0, 0, 0, 0);">
+                        </div>
 
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-688-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-178','-178','-168','-141']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-responsive_offset="on" data-responsive="off" style="z-index: 6;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
-                    </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-688-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-178','-178','-168','-141']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-responsive_offset="on" data-responsive="off" style="z-index: 6;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
+                        </div>
 
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption Creative-SubTitle   tp-resizeme rs-parallaxlevel-2" id="slide-688-layer-3" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-95','-95','-84','-67']" data-fontsize="['16','16','16','14']" data-lineheight="['14','14','14','12']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2350" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;text-align:center;">Maxx Construtora
-                    </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption Creative-SubTitle   tp-resizeme rs-parallaxlevel-2" id="slide-688-layer-3" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-95','-95','-84','-67']" data-fontsize="['16','16','16','14']" data-lineheight="['14','14','14','12']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2350" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;text-align:center;"><?= $item['titulo'] ?>
+                        </div>
 
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption Creative-Title   tp-resizeme rs-parallaxlevel-1" id="slide-688-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-10','-10','-10','-10']" data-fontsize="['70','70','50','40']" data-lineheight="['70','70','55','45']" data-width="['none','none','none','320']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2550" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 8; white-space: nowrap;text-align:center;">Construção,
-                        <br/> Rede Pluvial &amp; Obras gerais
-                    </div>
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption Creative-Title   tp-resizeme rs-parallaxlevel-1" id="slide-688-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-10','-10','-10','-10']" data-fontsize="['70','70','50','40']" data-lineheight="['70','70','55','45']" data-width="['none','none','none','320']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2550" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 8; white-space: nowrap;text-align:center;"><?= $item['sub_titulo'] ?>
+                        </div>
 
-                    <!-- LAYER NR. 5 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-688-layer-5" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['137','137','119','100']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2900" data-responsive_offset="on" data-responsive="off" style="z-index: 9;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
-                    </div>
+                        <!-- LAYER NR. 5 -->
+                        <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-688-layer-5" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['137','137','119','100']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2900" data-responsive_offset="on" data-responsive="off" style="z-index: 9;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
+                        </div>
 
-                    <!-- LAYER NR. 6 -->
-                    <div class="tp-caption Creative-Button rev-btn  rs-parallaxlevel-15" id="slide-688-layer-6" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['694','611','689','540']" data-fontweight="['400','500','500','500']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(205, 176, 131, 1.00);bc:rgba(205, 176, 131, 1.00);cursor:pointer;" data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power2.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-start="3850" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 10; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">Continue a Jornada!.
-                    </div>
-                </li>
-                <!-- SLIDE  -->
-                <li data-index="rs-689" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="Rede Pluvial" data-param1="02" data-description="">
-                    <!-- MAIN IMAGE -->
-                    <img src="<?= IMAGEMSITE ?>/banners/banner02.jpeg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
-                    <!-- LAYERS -->
+                        <!-- LAYER NR. 6 -->
+                        <div class="tp-caption Creative-Button rev-btn  rs-parallaxlevel-15" id="slide-688-layer-6" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['694','611','689','540']" data-fontweight="['400','500','500','500']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(205, 176, 131, 1.00);bc:rgba(205, 176, 131, 1.00);cursor:pointer;" data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power2.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-start="3850" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 10; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;"><?= $item['titulo_link'] ?>.
+                        </div>
+                    </li>
+                    <?php
+                }
+                ?>
 
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-tobggroup" id="slide-689-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-width="full" data-height="full" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="opacity:0;s:1500;e:Power2.easeInOut;" data-transform_out="opacity:0;s:1500;e:Power2.easeInOut;s:1500;e:Power2.easeInOut;" data-start="150" data-basealign="slide" data-responsive_offset="off" data-responsive="off" style="z-index: 5;background-color:rgba(18, 12, 20, 0.6);border-color:rgba(0, 0, 0, 0);">
-                    </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-689-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-178','-178','-168','-141']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-responsive_offset="on" data-responsive="off" style="z-index: 6;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
-                    </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption Creative-SubTitle   tp-resizeme rs-parallaxlevel-2" id="slide-689-layer-3" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-95','-95','-84','-67']" data-fontsize="['16','16','16','14']" data-lineheight="['14','14','14','12']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2350" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;text-align:center;">GREAT STUFF IN ALL FIELDS
-                    </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption Creative-Title   tp-resizeme rs-parallaxlevel-1" id="slide-689-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-10','-10','-10','-10']" data-fontsize="['70','70','50','40']" data-lineheight="['70','70','55','45']" data-width="['none','none','none','320']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2550" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 8; white-space: nowrap;text-align:center;">We do also
-                        <br/> Energy instalations
-                    </div>
-
-                    <!-- LAYER NR. 5 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-689-layer-5" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['137','137','119','100']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2900" data-responsive_offset="on" data-responsive="off" style="z-index: 9;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
-                    </div>
-
-                    <!-- LAYER NR. 6 -->
-                    <div class="tp-caption Creative-Button rev-btn  rs-parallaxlevel-15" id="slide-689-layer-6" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['694','611','689','540']" data-fontweight="['400','500','500','500']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(205, 176, 131, 1.00);bc:rgba(205, 176, 131, 1.00);cursor:pointer;" data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power2.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-start="3850" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 10; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">CONTINUE THE JOURNEY
-                    </div>
-                </li>
-                <!-- SLIDE  -->
-                <li data-index="rs-690" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="construct" data-param1="03" data-description="">
-                    <!-- MAIN IMAGE -->
-                    <img src="<?= IMAGEMSITE ?>/banners/banner03.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
-                    <!-- LAYERS -->
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-tobggroup" id="slide-690-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-width="full" data-height="full" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="opacity:0;s:1500;e:Power2.easeInOut;" data-transform_out="opacity:0;s:1500;e:Power2.easeInOut;s:1500;e:Power2.easeInOut;" data-start="150" data-basealign="slide" data-responsive_offset="off" data-responsive="off" style="z-index: 5;background-color:rgba(18, 12, 20, 0.6);border-color:rgba(0, 0, 0, 0);">
-                    </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-690-layer-4" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-178','-178','-168','-141']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-responsive_offset="on" data-responsive="off" style="z-index: 6;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
-                    </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption Creative-SubTitle   tp-resizeme rs-parallaxlevel-2" id="slide-690-layer-3" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-95','-95','-84','-67']" data-fontsize="['16','16','16','14']" data-lineheight="['14','14','14','12']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2350" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;text-align:center;">WIDE CONSTRUCTION COMPANY
-                    </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption Creative-Title   tp-resizeme rs-parallaxlevel-1" id="slide-690-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-10','-10','-10','-10']" data-fontsize="['70','70','50','40']" data-lineheight="['70','70','55','45']" data-width="['none','none','none','320']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="2550" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 8; white-space: nowrap;text-align:center;">Great Buildings
-                        <br/> With Standards
-                    </div>
-
-                    <!-- LAYER NR. 5 -->
-                    <div class="tp-caption tp-shape tp-shapewrapper  rs-parallaxlevel-3" id="slide-690-layer-5" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['137','137','119','100']" data-width="1" data-height="100" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="2900" data-responsive_offset="on" data-responsive="off" style="z-index: 9;background-color:rgba(205, 176, 131, 1.00);border-color:rgba(0, 0, 0, 0);">
-                    </div>
-
-                    <!-- LAYER NR. 6 -->
-                    <div class="tp-caption Creative-Button rev-btn  rs-parallaxlevel-15" id="slide-690-layer-6" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['694','611','689','540']" data-fontweight="['400','500','500','500']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(205, 176, 131, 1.00);bc:rgba(205, 176, 131, 1.00);cursor:pointer;" data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power2.easeOut;" data-transform_out="x:0;y:0;z:0;rX:0;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:500;e:Power1.easeIn;s:500;e:Power1.easeIn;" data-start="3850" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 10; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">BACK TO THE FIRST SLIDE
-                    </div>
-                </li>
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>
     </div>
+
     <!-- END REVOLUTION SLIDER -->
 </section>
 <!-- End home section -->
