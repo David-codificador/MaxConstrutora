@@ -7,10 +7,11 @@ class Banner{
     //Constante com informações de nome e descrição da tabela referente a está classe
     const TABELA = ['nome' => 'banner', 'descricao' => 'Banner'];
     //Campos existentes na tambela desta classe
-    const CAMPOS = ['id', 'imagem', 'titulo', 'sub_titulo', 'link', 'titulo_link', 'status', 'administrador_id'];
+    const CAMPOS = ['id', 'contador_banner', 'imagem', 'titulo', 'sub_titulo', 'link', 'titulo_link', 'status', 'administrador_id'];
     //Informaçõs sobre os campos da tabela
     const CAMPOSINFO = [   
         'id' => ['tamanho' => null, 'obrigatorio' => false, 'descricao' => 'id'],
+        'contador_banner' => ['tamanho' => 11, 'obrigatorio' => true, 'descricao' => 'Contador Banner'],
         'imagem' => ['tamanho' => 50, 'obrigatorio' => true, 'descricao' => 'imagem'],
         'titulo' => ['tamanho' => 45, 'obrigatorio' => false, 'descricao' => 'Título'],
         'sub_titulo' => ['tamanho' => 100, 'obrigatorio' => false, 'descricao' => 'Sub Título'],
@@ -22,6 +23,7 @@ class Banner{
     
     //Variáveis privadas referentes aos campos da tabela
     private $id;
+    private $contador_banner;
     private $imagem;
     private $titulo;
     private $sub_titulo;
@@ -42,6 +44,10 @@ class Banner{
     //Funções de set e get
     function getId() {
         return $this->id;
+    }
+
+    function getContador_banner() {
+        return $this->contador_banner;
     }
 
     function getImagem() {
@@ -74,6 +80,10 @@ class Banner{
 
     function setId($id) {
         $this->id = $id;
+    }
+
+    function setContador_banner($contador_banner) {
+        $this->contador_banner = $contador_banner;
     }
 
     function setImagem($imagem) {

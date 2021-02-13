@@ -79,7 +79,7 @@
 <script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.navigation.min.js"></script>
 <script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.parallax.min.js"></script>
 <script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.slideanims.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>gmap3.min.js"></script>
+<!--<script type="text/javascript" src="<?=JSSITE?>gmap3.min.js"></script>-->
 <script type="text/javascript" src="<?=JSSITE?>script.js"></script>
 <script type="text/javascript" src="<?=JSSITE?>ini.js"></script>
 

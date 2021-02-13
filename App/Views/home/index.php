@@ -8,7 +8,7 @@
                 <?php
                 foreach ($viewVar['banner'] as $item) {
                     ?>
-                    <li data-index="rs-688" data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="<?= $item['titulo'] ?>" data-param1="" data-description="">
+                    <li  data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="<?= $item['titulo'] ?>" data-param1="<?= $item['contador_banner'] ?>" >
                         <!-- MAIN IMAGE -->
                         <img src="<?= IMAGEMSITE ?>/banners/<?= $item['imagem'] ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
                         <!-- LAYERS -->
@@ -40,7 +40,6 @@
                     <?php
                 }
                 ?>
-
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>
