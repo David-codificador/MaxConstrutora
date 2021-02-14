@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <ul class="breadcrumb">
                     <li><a href="<?= LINK ?>banner"><i class="fa fa-home"></i> Início</a></li>
-                    <li><a>Artigo</a></li>
+                    <li><a>Banner</a></li>
                     <li class="active">Cadastro</li>
                 </ul>
             </div>
@@ -34,8 +34,17 @@
                                             <span>Imagem no tamanho de 1920px largura 780px de altura</span>
                                         </div>
                                     </div>  
-
-                                    <div class="col-md-6">
+                                     <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="categoria">Numero Banner <sup class="color-danger">*</sup></label>
+                                            <select class="form-control" id="contador_banner" name="contador_banner" required="">
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                            </select>
+                                        </div>
+                                    </div>   
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="titulo">Título </label>
                                             <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" maxlength="100" value="<?= $Sessao::retornaFormulario("titulo") ?>" required>

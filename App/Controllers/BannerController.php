@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Lib\Sessao;
-
 use App\Models\Entidades\Canvas;
 
 class BannerController extends Controller {
@@ -32,8 +31,8 @@ class BannerController extends Controller {
         $this->render("banner/cadastro", "Cadastro de banner", $css, $js, 1);
         Sessao::limpaFormulario();
     }
-    
-      public function inserir() {
+
+    public function inserir() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
@@ -43,12 +42,12 @@ class BannerController extends Controller {
         $campus = \App\Models\Entidades\Banner::CAMPOS;
 
         Sessao::gravaFormulario($vetor);
-           if ($vetor['status'] == "on") {
+        if ($vetor['status'] == "on") {
             $vetor['status'] = 1;
         } else {
             $vetor['status'] = 2;
         }
-        
+
         foreach ($vetor as $indice => $valor) {
             if (in_array($indice, $campus)) {
                 if ($vetor[$indice] == '') {
@@ -58,7 +57,8 @@ class BannerController extends Controller {
                 }
             }
         }
- 
+
+        $dados['contador_banner'] = $this->contador_banner($vetor['contador_banner']);
         $dados['administrador_id'] = Sessao::getAdministrador('id');
 
         if ($_FILES["imagem"]["name"] != "") {
@@ -91,8 +91,8 @@ class BannerController extends Controller {
         }
 
         $id = $bo->inserir(\App\Models\Entidades\Banner::TABELA['nome'], $dados, \App\Models\Entidades\Banner::CAMPOSINFO, true);
-        
-     
+
+
         if ($id == FALSE) {
             if (!Sessao::existeMensagem()) {
                 Sessao::gravaMensagem("Falha", "Verifique todos os campos e tente novamente", 2);
@@ -130,14 +130,14 @@ class BannerController extends Controller {
             $this->redirect('banner/listar');
         }
     }
-    
+
     public function listar($parametro) {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
         $css = '';
         $js = '';
-                
+
         $bo = new \App\Models\BO\BannerBO();
 
         if (!is_numeric($parametro[0])) {
@@ -245,8 +245,6 @@ class BannerController extends Controller {
 
         $this->redirect('banner/listar');
     }
-
-  
 
     public function salvar() {
         $this->validaAdministrador();
@@ -434,6 +432,23 @@ class BannerController extends Controller {
         } else {
             Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
             $this->redirect('banner/listar');
+        }
+    }
+
+    public function contador_banner($contador_banner) {
+        switch ($contador_banner) {
+            case 1:
+                return "01";
+                break;
+            case 2:
+                return "02";
+                break;
+            case 3:
+                return "03";
+                break;
+            default:
+                return "|";
+                break;
         }
     }
 
