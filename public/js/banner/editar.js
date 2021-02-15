@@ -12,7 +12,8 @@ $(function($) {
     $(".js-states").select2();
 });
 
-function exibirImgBanerRotativo(src){
+function exibirImgBanner(src){
+  
     $("#tag_exibir_img").attr("src", src);
     $("#exibirImgBanerRotativo").modal();
 }

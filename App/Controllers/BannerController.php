@@ -347,9 +347,9 @@ class BannerController extends Controller {
                 $this->redirect('banner/editar/' . $id);
             }
 
-            $bo = new BannerBO();
+            $bo = new \App\Models\BO\BannerBO();
 
-            $resultado = $bo->update(Banner::TABELA['nome'], $dados, "id = ?", [$id], 1, Banner::CAMPOSINFO);
+            $resultado = $bo->editar(\App\Models\Entidades\Banner::TABELA['nome'], $dados, "id = ?", [$id], 1, Banner::CAMPOSINFO);
 
             if (Sessao::existeMensagem() or $resultado == FALSE) {
                 if (!Sessao::existeMensagem()) {
@@ -358,13 +358,13 @@ class BannerController extends Controller {
 
                 $this->redirect('banner/editar/' . $id);
             } else {
-                $x = "campo " . Banner::CAMPOSINFO["imagem"]['descricao'] . ' editado de:<br><img src="' . IMAGEMSITE . 'banner/' . $resultado["imagem"] . '" /><br>para:<br><img src="' . IMAGEMSITE . 'banner/' . $nome . '" /><br>';
+                $x = "campo " . \App\Models\Entidades\Banner::CAMPOSINFO["imagem"]['descricao'] . ' editado de:<br><img src="' . IMAGEMSITE . 'banner/' . $resultado["imagem"] . '" /><br>para:<br><img src="' . IMAGEMSITE . 'banner/' . $nome . '" /><br>';
 
                 $info = [
                     'tipo' => 2,
                     'administrador' => Sessao::getAdministrador('id'),
                     'campos' => $x,
-                    'tabela' => Banner::TABELA['descricao'],
+                    'tabela' => \App\Models\Entidades\Banner::TABELA['descricao'],
                     'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a edição da imagem do banner(a) '
                 ];
 
@@ -389,42 +389,30 @@ class BannerController extends Controller {
 
         if (is_numeric($id)) {
 
-            $bo = new BannerBO();
-            $banner = $bo->selecionarVetor(Banner::TABELA['nome'], ['*'], 1, null, "id = ?", [$id], null);
+            $bo = new \App\Models\BO\BannerBO();
+            $banner = $bo->selecionarVetor(\App\Models\Entidades\Banner::TABELA['nome'], ['*'], "id = ?", [$id], null);
 
             if ($banner) {
                 $css = '
-                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'bootstrap.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'font-awesome.min.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'animate-css/animate.min.css" media="screen" >
-                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'lobipanel/lobipanel.min.css" media="screen" >
-
-                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'prism/prism.css" media="screen" >
+                   
                     <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
                     <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >
 
-                    <link rel="stylesheet" href="' . CSSTEMPLATE . 'main.css" media="screen" >
+            
                 ';
 
                 $js = '
-                    <script src="' . JSSITE . 'jquery/jquery-2.2.4.min.js"></script>
-                    <script src="' . JSSITE . 'jquery-ui/jquery-ui.min.js"></script>
-                    <script src="' . JSSITE . 'bootstrap/bootstrap.min.js"></script>
-                    <script src="' . JSSITE . 'pace/pace.min.js"></script>
-                    <script src="' . JSSITE . 'lobipanel/lobipanel.min.js"></script>
-                    <script src="' . JSSITE . 'iscroll/iscroll.js"></script>
+             
 
-                    <script src="' . JSSITE . 'prism/prism.js"></script>
-                    <script src="' . JSSITE . 'switchery/switchery.min.js"></script>
-                    <script src="' . JSSITE . 'select2/select2.min.js"></script>
-                    <script src="' . JSSITE . 'jquery.mask.js"></script>
-
-                    <script src="' . JSSITE . 'main.js"></script>
-                ';
+              
+                    <script src="' . JSTEMPLATE . 'switchery/switchery.min.js"></script>
+                    <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>
+                   
+               ';
 
                 $this->setViewParam('item', $banner);
 
-                $this->render('banner/editar', $banner['nome'], $css, $js, 1);
+                $this->render('banner/editar', $banner['titulo'], $css, $js, 1);
             } else {
                 Sessao::gravaMensagem("Falha", "Banner não encontrado", 2);
                 $this->redirect('banner/listar');
