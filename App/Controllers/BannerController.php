@@ -342,7 +342,7 @@ class BannerController extends Controller {
 
                     $img->carrega('./public/imagemSite/banners/' . $nome)
                             ->hexa('#FFFFFF')
-                            ->redimensiona(1610, 420, 'preenchimento')
+                            ->redimensiona(1920, 780, 'preenchimento')
                             ->grava('./public/imagemSite/banners/' . $nome, 80);
 
                     $dados['imagem'] = $nome;
