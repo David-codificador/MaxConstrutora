@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <ul class="breadcrumb">
                     <li><a href="<?= LINK ?>banner"><i class="fa fa-home"></i> Início</a></li>
-                    <li><a>Banner</a></li>
+                    <li<a href="<?=LINK?>banner">Galeria</a></li>
                     <li class="active">Cadastro</li>
                 </ul>
             </div>
@@ -24,12 +24,13 @@
                     <div class="panel">
                         <div class="panel-body">
                             <form action="<?= LINK ?>banner/salvar" method="post" class="p-20" enctype="multipart/form-data">
+                                <input type="hidden" name="banner" id="banner" value="<?= $viewVar['item']['id'] ?>" required>
                                 <h5 class="underline mt-n">Informações</h5>
 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
-                                            <img src="<?= IMAGEMSITE ?>banners/<?= $viewVar['item']['imagem'] != '' ? $viewVar['item']['imagem'] : 'padrao.jpg' ?>" class="img-circle profile-img" width="20%" onclick="exibirImgBanner('<?= IMAGEMSITE ?>banners/<?= $viewVar['item']['imagem'] != '' ? $viewVar['item']['imagem'] : 'padrao.jpg' ?>')">
+                                            <img src="<?= IMAGEMSITE ?>banners/<?= $viewVar['item']['imagem'] != '' ? $viewVar['item']['imagem'] : 'padrao.jpg' ?>" class="img-circle profile-img" width="10%" onclick="exibirImgBanerRotativo('<?= IMAGEMSITE ?>banners/<?= $viewVar['item']['imagem'] != '' ? $viewVar['item']['imagem'] : 'padrao.jpg' ?>')" >
                                         </div>
                                     </div> 
 
@@ -52,7 +53,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="sub_titulo">Sub Título</label>
-                                            <input type="text" class="form-control" id="sub_titulo" name="sub_titulo" placeholder="Sub Títlo" maxlength="100" value="<?= $viewVar['item']['sub_titulo'] ?>" required>
+                                            <input type="text" class="form-control" id="sub_titulo" name="sub_titulo" placeholder="Sub Títlo" maxlength="60" value="<?= $viewVar['item']['sub_titulo'] ?>" required>
                                         </div>
                                     </div>  
                                     <div class="col-md-6">
@@ -77,7 +78,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group pull-right mt-10" role="group">
-                                            <a href="<?= LINK ?>banner/visualizar/<?= $viewVar['item']['id'] ?>" class="btn bg-gray btn-wide"><i class="fa fa-mail-reply"></i>Voltar</a>
+                                            <a href="<?= LINK ?>banner/listar>" class="btn bg-gray btn-wide"><i class="fa fa-mail-reply"></i>Voltar</a>
                                             <button type="submit" class="btn bg-black btn-wide"><i class="fa fa-arrow-right"></i>Salvar</button>
                                         </div>
                                     </div>
@@ -108,6 +109,28 @@
                         <i class="fa fa-check"></i> Status - Selecionado(Ativo) ou não selecionado(Inativo).
                     </p>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exibirImgBanerRotativo" tabindex="-1" role="dialog" aria-labelledby="exibirImgBanerRotativo">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <center>
+                    <img id="tag_exibir_img" src="" style="width: 60%; margin: auto !important">
+                </center>
+                <br>
+                <form action="<?= LINK ?>banners/editarImagem" method="post" id="uploadImagem" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= $viewVar['item']["id"] ?>" required />
+                    <input type="file" name="imagem" class="form-control" onchange="$('#uploadImagem').submit()" required/>
+                </form>
+                <br>
+                <p>Basta selecionar a imagem que ela será enviada automaticamente</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

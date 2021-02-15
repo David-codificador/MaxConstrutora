@@ -82,7 +82,7 @@ class BannerController extends Controller {
 
                 $dados['imagem'] = $nome;
             } else {
-                Sessao::gravaMensagem("Falha ao enviar Baner Rotativo", "Baner Rotativo não enviada", 2);
+                Sessao::gravaMensagem("Falha ao enviar Banner Rotativo", "Banner Rotativo não enviada", 2);
                 $this->redirect('banner/cadastro');
             }
         } else {
@@ -125,7 +125,7 @@ class BannerController extends Controller {
             $this->inserirAuditoria($info);
 
             Sessao::limpaFormulario();
-            Sessao::gravaMensagem("Sucesso", "Baner Rotativo inserido", 1);
+            Sessao::gravaMensagem("Sucesso", "Banner Rotativo inserido", 1);
 
             $this->redirect('banner/listar');
         }
@@ -236,7 +236,7 @@ class BannerController extends Controller {
                 $this->inserirAuditoria($info);
             } else {
                 if (!Sessao::existeMensagem()) {
-                    Sessao::gravaMensagem("Falha", "Baner Rotativo não excluido", 2);
+                    Sessao::gravaMensagem("Falha", "Banner Rotativo não excluido", 2);
                 }
             }
         } else {
@@ -249,32 +249,39 @@ class BannerController extends Controller {
     public function salvar() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
+
         $id = $_POST['banner'];
 
         if (is_numeric($id)) {
-            $bo = new BannerBO();
+            $bo = new \App\Models\BO\BannerBO();
 
             $vetor = $_POST;
 
             $dados = array();
-            $campus = Banner::CAMPOS;
+            $campus = \App\Models\Entidades\Banner::CAMPOS;
 
+
+            foreach ($vetor as $indice => $valor) {
+                if (in_array($indice, $campus)) {
+                    if ($vetor[$indice] == '') {
+                        $dados[$indice] = "null";
+                    } else {
+                        $dados[$indice] = $vetor[$indice];
+                    }
+                }
+            }
+            
             if ($vetor['status'] == "on") {
                 $dados['status'] = 1;
             } else {
                 $dados['status'] = 2;
             }
 
-            if ($vetor['texto_padrao'] == "on") {
-                $dados['texto_padrao'] = 1;
-            } else {
-                $dados['texto_padrao'] = 2;
-            }
-            $resultado = $bo->update(Banner::TABELA['nome'], $dados, "id = ?", [$id], 1, Banner::CAMPOSINFO);
+            $resultado = $bo->editar(\App\Models\Entidades\Banner::TABELA['nome'], $dados, "id = ?", [$id], 1, \App\Models\Entidades\Banner::CAMPOSINFO);
 
             if (Sessao::existeMensagem() or $resultado == FALSE) {
                 if (!Sessao::existeMensagem()) {
-                    Sessao::gravaMensagem($vetor['descricao'], "Baner Rotativo sem edição", 2);
+                    Sessao::gravaMensagem($vetor['titulo'], "Banner Rotativo sem edição", 2);
                 }
 
                 $this->redirect('banner/listar');
@@ -287,7 +294,7 @@ class BannerController extends Controller {
                     }
 
                     if ($resultado[$indice] != $value) {
-                        $x .= "campo " . Banner::CAMPOSINFO[$indice]['descricao'] . ' editado de: "' . $resultado[$indice] . '" para "' . $value . '"<br>';
+                        $x .= "campo " . \App\Models\Entidades\Banner::CAMPOSINFO[$indice]['descricao'] . ' editado de: "' . $resultado[$indice] . '" para "' . $value . '"<br>';
                     }
                 }
 
@@ -295,17 +302,18 @@ class BannerController extends Controller {
                     'tipo' => 2,
                     'administrador' => Sessao::getAdministrador('id'),
                     'campos' => $x,
-                    'tabela' => Banner::TABELA['descricao'],
+                    'tabela' => \App\Models\Entidades\Banner::TABELA['descricao'],
                     'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a edição das informações de um(a) banner(a).'
                 ];
 
                 $this->inserirAuditoria($info);
 
-                Sessao::gravaMensagem("Sucesso", "Baner Rotativo " . $resultado['nome'] . ", editado", 1);
+                Sessao::gravaMensagem("Sucesso", "Banner Rotativo " . $resultado['titulo'] . ", editado", 1);
 
                 $this->redirect('banner/listar/');
             }
         } else {
+
             Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
         }
 
@@ -332,24 +340,24 @@ class BannerController extends Controller {
 
                     $img = new Canvas();
 
-                    $img->carrega('./public/imagemSite/banner/' . $nome)
+                    $img->carrega('./public/imagemSite/banners/' . $nome)
                             ->hexa('#FFFFFF')
                             ->redimensiona(1610, 420, 'preenchimento')
-                            ->grava('./public/imagemSite/banner/' . $nome, 80);
+                            ->grava('./public/imagemSite/banners/' . $nome, 80);
 
                     $dados['imagem'] = $nome;
                 } else {
-                    Sessao::gravaMensagem("Falha ao enviar Baner Rotativo", "Baner Rotativo não enviado", 2);
+                    Sessao::gravaMensagem("Falha ao enviar Banner Rotativo", "Banner Rotativo não enviado", 2);
                     $this->redirect('banner/editar/' . $id);
                 }
             } else {
-                Sessao::gravaMensagem("Falha", "Baner Rotativo não selecionado", 2);
+                Sessao::gravaMensagem("Falha", "Banner Rotativo não selecionado", 2);
                 $this->redirect('banner/editar/' . $id);
             }
 
             $bo = new \App\Models\BO\BannerBO();
 
-            $resultado = $bo->editar(\App\Models\Entidades\Banner::TABELA['nome'], $dados, "id = ?", [$id], 1, Banner::CAMPOSINFO);
+            $resultado = $bo->editar(\App\Models\Entidades\Banner::TABELA['nome'], $dados, "id = ?", [$id], 1, \App\Models\Entidades\Banner::CAMPOSINFO);
 
             if (Sessao::existeMensagem() or $resultado == FALSE) {
                 if (!Sessao::existeMensagem()) {
@@ -370,7 +378,7 @@ class BannerController extends Controller {
 
                 $this->inserirAuditoria($info);
 
-                Sessao::gravaMensagem("Sucesso", "Imagem do Baner Rotativo editado", 1);
+                Sessao::gravaMensagem("Sucesso", "Imagem do Banner Rotativo editado", 1);
 
                 $this->redirect('banner/editar/' . $id);
             }
@@ -397,17 +405,12 @@ class BannerController extends Controller {
                    
                     <link rel="stylesheet" href="' . CSSTEMPLATE . '/switchery/switchery.min.css" >
                     <link rel="stylesheet" href="' . CSSTEMPLATE . '/select2/select2.min.css" >
-
-            
                 ';
 
                 $js = '
-             
-
-              
                     <script src="' . JSTEMPLATE . 'switchery/switchery.min.js"></script>
-                    <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>
-                   
+                    <script src="' . JSTEMPLATE . 'select2/select2.min.js"></script>   
+                     <script src="' . JSTEMPLATE . 'jquery.mask.js"></script>
                ';
 
                 $this->setViewParam('item', $banner);
