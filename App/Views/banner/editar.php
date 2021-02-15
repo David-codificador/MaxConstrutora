@@ -122,7 +122,7 @@
                     <img id="tag_exibir_img" src="" style="width: 60%; margin: auto !important">
                 </center>
                 <br>
-                <form action="<?= LINK ?>banners/editarImagem" method="post" id="uploadImagem" enctype="multipart/form-data">
+                <form action="<?= LINK ?>banner/editarImagem" method="post" id="uploadImagem" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $viewVar['item']["id"] ?>" required />
                     <input type="file" name="imagem" class="form-control" onchange="$('#uploadImagem').submit()" required/>
                 </form>

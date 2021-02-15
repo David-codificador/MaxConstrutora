@@ -82,7 +82,7 @@ class BannerController extends Controller {
 
                 $dados['imagem'] = $nome;
             } else {
-                Sessao::gravaMensagem("Falha ao enviar Banner Rotativo", "Banner Rotativo não enviada", 2);
+                Sessao::gravaMensagem("Falha ao enviar Banner ", "Banner  não enviado", 2);
                 $this->redirect('banner/cadastro');
             }
         } else {
@@ -125,7 +125,7 @@ class BannerController extends Controller {
             $this->inserirAuditoria($info);
 
             Sessao::limpaFormulario();
-            Sessao::gravaMensagem("Sucesso", "Banner Rotativo inserido", 1);
+            Sessao::gravaMensagem("Sucesso", "Banner  inserido", 1);
 
             $this->redirect('banner/listar');
         }
@@ -236,7 +236,7 @@ class BannerController extends Controller {
                 $this->inserirAuditoria($info);
             } else {
                 if (!Sessao::existeMensagem()) {
-                    Sessao::gravaMensagem("Falha", "Banner Rotativo não excluido", 2);
+                    Sessao::gravaMensagem("Falha", "Banner  não excluido", 2);
                 }
             }
         } else {
@@ -281,7 +281,7 @@ class BannerController extends Controller {
 
             if (Sessao::existeMensagem() or $resultado == FALSE) {
                 if (!Sessao::existeMensagem()) {
-                    Sessao::gravaMensagem($vetor['titulo'], "Banner Rotativo sem edição", 2);
+                    Sessao::gravaMensagem($vetor['titulo'], "Banner  sem edição", 2);
                 }
 
                 $this->redirect('banner/listar');
@@ -308,7 +308,7 @@ class BannerController extends Controller {
 
                 $this->inserirAuditoria($info);
 
-                Sessao::gravaMensagem("Sucesso", "Banner Rotativo " . $resultado['titulo'] . ", editado", 1);
+                Sessao::gravaMensagem("Sucesso", "Banner  " . $resultado['titulo'] . ", editado", 1);
 
                 $this->redirect('banner/listar/');
             }
@@ -347,11 +347,11 @@ class BannerController extends Controller {
 
                     $dados['imagem'] = $nome;
                 } else {
-                    Sessao::gravaMensagem("Falha ao enviar Banner Rotativo", "Banner Rotativo não enviado", 2);
+                    Sessao::gravaMensagem("Falha ao enviar Banner ", "Banner  não enviado", 2);
                     $this->redirect('banner/editar/' . $id);
                 }
             } else {
-                Sessao::gravaMensagem("Falha", "Banner Rotativo não selecionado", 2);
+                Sessao::gravaMensagem("Falha", "Banner  não selecionado", 2);
                 $this->redirect('banner/editar/' . $id);
             }
 
@@ -378,7 +378,7 @@ class BannerController extends Controller {
 
                 $this->inserirAuditoria($info);
 
-                Sessao::gravaMensagem("Sucesso", "Imagem do Banner Rotativo editado", 1);
+                Sessao::gravaMensagem("Sucesso", "Imagem do Banner  editado", 1);
 
                 $this->redirect('banner/editar/' . $id);
             }
