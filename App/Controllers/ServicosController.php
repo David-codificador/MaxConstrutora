@@ -13,4 +13,5 @@ class ServicosController extends Controller {
         $this->render("home/servicos", "Serviços", $css, $js, 3);
     }
       
+    
 }
