@@ -11,6 +11,11 @@ class ObrasController extends Controller {
         $css = null;
         $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
 
+        $bo = new \App\Models\BO\ObrasBO();
+        $obras = $bo->listarVetor(\App\Models\Entidades\Obras::TABELA['nome'], ['*'], null, null, null, [], "id desc");
+
+        $this->setViewParam('obras', $obras);
+
         $this->render("home/obras", "Obras", $css, $js, 3);
     }
 
@@ -195,8 +200,8 @@ class ObrasController extends Controller {
 
         $this->render('obras/listar', "Listagem de Obras", $css, $js, 1);
     }
-    
-       public function excluir($parametro) {
+
+    public function excluir($parametro) {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
@@ -210,7 +215,7 @@ class ObrasController extends Controller {
 
             if ($resposta) {
                 unlink('./public/imagemSite/obras/' . $resposta['imagem']);
-                
+
                 Sessao::gravaMensagem("Sucesso", "Obra Excluida", 1);
 
                 $info = [
@@ -233,7 +238,106 @@ class ObrasController extends Controller {
 
         $this->redirect('obras/listar');
     }
-    
+
+    public function editar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+
+            $bo = new \App\Models\BO\ObrasBO();
+            $obras = $bo->selecionarVetor(\App\Models\Entidades\Obras::TABELA['nome'], ['*'], "id = ?", [$id], null);
+
+            if ($obras) {
+
+                $css = '';
+                $js = '';
+
+
+
+                $this->setViewParam('item', $obras);
+
+                $this->render('obras/editar', $this->categoria($obras['categoria']), $css, $js, 1);
+            } else {
+                Sessao::gravaMensagem("Falha", "Tipo de obras não encontrada", 2);
+                $this->redirect('obras/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+            $this->redirect('obras/listar');
+        }
+    }
+
+    public function salvar() {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+        $id = $_POST['obras'];
+
+        if (is_numeric($id)) {
+            $bo = new \App\Models\BO\ObrasBO();
+
+            $vetor = $_POST;
+
+            $dados = array();
+            $campus = \App\Models\Entidades\Obras::CAMPOS;
+
+            foreach ($vetor as $indice => $valor) {
+                if (in_array($indice, $campus)) {
+                    if ($vetor[$indice] == '') {
+                        $dados[$indice] = "null";
+                    } else {
+                        $dados[$indice] = $vetor[$indice];
+                    }
+                }
+            }
+
+            $resultado = $bo->editar(\App\Models\Entidades\Obras::TABELA['nome'], $dados, "id = ?", [$id], 1, \App\Models\Entidades\Obras::CAMPOSINFO);
+            
+            if (Sessao::existeMensagem() or $resultado == FALSE) {
+                if (!Sessao::existeMensagem()) {
+                    Sessao::gravaMensagem($vetor['descricao'], "Obra sem edição", 2);
+                }
+
+                $this->redirect('obras/listar');
+            } else {
+                $dados['categoria'] = $this->categoria($vetor['categoria']);
+                $resultado['categoria'] = $this->categoria($resultado['categoria']);
+
+                $x = '';
+
+                foreach ($dados as $indice => $value) {
+                    if ($value == 'null') {
+                        $value = '';
+                    }
+
+                    if ($resultado[$indice] != $value) {
+                        $x .= "campo " . \App\Models\Entidades\Obras::CAMPOSINFO[$indice]['descricao'] . ' editado de: "' . $resultado[$indice] . '" para "' . $value . '"<br>';
+                    }
+                }
+
+                $info = [
+                    'tipo' => 2,
+                    'administrador' => Sessao::getAdministrador('id'),
+                    'campos' => $x,
+                    'tabela' => \App\Models\Entidades\Obras::TABELA['descricao'],
+                    'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a edição das informações de uma Obra.'
+                ];
+
+                $this->inserirAuditoria($info);
+
+                Sessao::gravaMensagem("Sucesso", "Obra " . $resultado['titulo'] . ", editada", 1);
+
+                $this->redirect('obras/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+        }
+
+        $this->redirect('obras/listar');
+    }
+
     public function categoria($categoria) {
         switch ($categoria) {
             case 1:
