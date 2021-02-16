@@ -98,11 +98,18 @@
                                 <li class="nav-header">
                                     <span class="">Configuração</span>
                                 </li>
-                                 <li class="has-children">
+                                <li class="has-children">
                                     <a href="#"><i class="fa fa-picture-o"></i> <span>Banner</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
                                         <li><a href="<?= LINK ?>banner/cadastro"><i class="fa fa-plus-circle"></i> <span>Cadastro</span></a></li>
                                         <li><a href="<?= LINK ?>banner/listar"><i class="fa fa-bars"></i> <span>Listagem</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="#"><i class="fa fa-thumb-tack"></i> <span>Obras</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li><a href="<?= LINK ?>obras/cadastro"><i class="fa fa-plus-circle"></i> <span>Cadastro</span></a></li>
+                                        <li><a href="<?= LINK ?>obras/listar"><i class="fa fa-bars"></i> <span>Listagem</span></a></li>
                                     </ul>
                                 </li>
                                 <li class="has-children">

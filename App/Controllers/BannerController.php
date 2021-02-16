@@ -90,7 +90,7 @@ class BannerController extends Controller {
             $this->redirect('banner/cadastro');
         }
 
-        $id = $bo->inserir(\App\Models\Entidades\Banner::TABELA['nome'], $dados, \App\Models\Entidades\Banner::CAMPOSINFO, true);
+        $id = $bo->inserir(\App\Models\Entidades\Banner::TABELA['nome'], $dados, \App\Models\Entidades\Banner::CAMPOSINFO);
 
 
         if ($id == FALSE) {
