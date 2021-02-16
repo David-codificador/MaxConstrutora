@@ -8,7 +8,7 @@
             <div class="col-md-3">
                 <div class="side-navigation">
                     <ul class="side-navigation-list">
-                        <li><a href="<?= LINK ?>redePluvial">Rede Pluvial</a></li>
+                        <li><a href="<?= LINK ?>servicos/redePluvial">Rede Pluvial</a></li>
                         <li><a class="active" href="<?= LINK ?>servicos">Construção Civil</a></li>
                         <li><a href="building.html">Meio Fio</a></li>
                         <li><a href="electricy.html">Sarjeta</a></li>
