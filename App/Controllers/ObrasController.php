@@ -7,26 +7,26 @@ use App\Models\Entidades\Canvas;
 
 class ObrasController extends Controller {
 
-  public function index() {
+    public function index() {
         $css = null;
-         $js = '<script type="text/javascript" src="'. JSSITE .'script.js"></script>';
+        $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
 
         $this->render("home/obras", "Obras", $css, $js, 3);
     }
-    
-     public function cadastro() {
+
+    public function cadastro() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
-        $css = '';     
+        $css = '';
         $js = '';
-              
-        
+
+
         $this->render("obras/cadastro", "Cadastro de Obras", $css, $js, 1);
         Sessao::limpaFormulario();
     }
-    
-     public function inserir() {
+
+    public function inserir() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
@@ -79,9 +79,9 @@ class ObrasController extends Controller {
             $this->redirect('obras/cadastro');
         }
 
-        
+
         $id = $bo->inserir(\App\Models\Entidades\Obras::TABELA['nome'], $dados, \App\Models\Entidades\Obras::CAMPOSINFO);
-        
+
         if ($id == FALSE) {
             if (!Sessao::existeMensagem()) {
                 Sessao::gravaMensagem("Falha", "Verifique todos os campos e tente novamente", 2);
@@ -101,7 +101,7 @@ class ObrasController extends Controller {
                     $x .= "campo " . \App\Models\Entidades\Obras::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
                 }
             }
-            $x .= '<img src="'.IMAGEMSITE.'obras/'.$nome.'" style="width: 100%">';
+            $x .= '<img src="' . IMAGEMSITE . 'obras/' . $nome . '" style="width: 100%">';
 
             $info = [
                 'tipo' => 1,
@@ -116,11 +116,125 @@ class ObrasController extends Controller {
             Sessao::limpaFormulario();
             Sessao::gravaMensagem("Sucesso", "Obra inserida", 1);
 
-            $this->redirect('obras/cadastro');
+            $this->redirect('obras/listar');
         }
-    }    
+    }
+
+    public function listar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $css = '';
+        $js = '';
+
+        $bo = new \App\Models\BO\ObrasBO();
+
+        if (!is_numeric($parametro[0])) {
+            $this->redirect('obras/listar/1/' . $parametro[0]);
+        }
+        $p = (isset($parametro[0]) or is_numeric($parametro[0])) ? $parametro[0] : 1;
+        $busca = (isset($parametro[1])) ? $parametro[1] : null;
+
+        $quantidade = 12;
+        $pagina = $p * $quantidade - $quantidade;
+
+        $condicao = "";
+        $valoresCondicao = [];
+
+        if ($busca) {
+            $condicao .= " titulo like '%?%'";
+            array_push($valoresCondicao, "$busca");
+        }
+
+        $orderBy = "id desc";
+
+        $tabela = \App\Models\Entidades\Obras::TABELA['nome'];
+
+        $resultado = $bo->listarVetor($tabela, ["*"], $quantidade, $pagina, $condicao, $valoresCondicao, $orderBy);
+
+        $this->setViewParam('obras', $resultado);
+
+        $quanObras = $bo->selecionar($tabela, ["count(id) as id"], $condicao, $valoresCondicao, $orderBy);
+
+        $quanPaginas = ceil($quanObras->getId() / $quantidade);
+
+        if ($p > $quanPaginas and $p != 1) {
+            Sessao::gravaMensagem("Falha", "Página não encontrada", 2);
+            $this->redirect('obras/listar');
+        }
+
+        if ($p < 5) {
+            $i = 0;
+            $fim = $quanPaginas < 5 ? $quanPaginas : 5;
+        } else {
+            if ($p < $quanPaginas - 2) {
+                $i = $p - 3;
+                $fim = $p + 2;
+            } else {
+                $i = $quanPaginas - 5;
+                $fim = $quanPaginas;
+            }
+        }
+
+        $paginacao = array(
+            'quanObras' => $quanObras->getId(),
+            'quanPaginas' => $quanPaginas,
+            'inicio' => $i,
+            'fim' => $fim,
+            'pagina' => $p,
+            'anterior' => $p - 1,
+            'proxima' => $p + 1,
+            'busca' => $busca
+        );
+
+        $this->setViewParam('paginacao', $paginacao);
+
+        if ($quanObras->getId() < 1) {
+            Sessao::gravaMensagem('', 'Nenhum registro encontrado!', 2);
+        }
+
+        $this->render('obras/listar', "Listagem de Obras", $css, $js, 1);
+    }
     
-        public function categoria($categoria){
+       public function excluir($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+            $bo = new \App\Models\BO\ObrasBO();
+            $tabela = \App\Models\Entidades\Obras::TABELA['nome'];
+
+            $resposta = $bo->excluir($tabela, "id = ?", [$id], 1);
+
+            if ($resposta) {
+                unlink('./public/imagemSite/obras/' . $resposta['imagem']);
+                
+                Sessao::gravaMensagem("Sucesso", "Obra Excluida", 1);
+
+                $info = [
+                    'tipo' => 3,
+                    'administrador' => Sessao::getAdministrador('id'),
+                    'campos' => "-",
+                    'tabela' => \App\Models\Entidades\Obras::TABELA['descricao'],
+                    'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a exclusão de uma imagem da obra: ' . $this->categoria($resposta['categoria'])
+                ];
+
+                $this->inserirAuditoria($info);
+            } else {
+                if (!Sessao::existeMensagem()) {
+                    Sessao::gravaMensagem("Falha", "Obra não excluida", 2);
+                }
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+        }
+
+        $this->redirect('obras/listar');
+    }
+    
+    public function categoria($categoria) {
         switch ($categoria) {
             case 1:
                 return "Construção civil";
@@ -142,7 +256,5 @@ class ObrasController extends Controller {
                 break;
         }
     }
-        
+
 }
-
-
