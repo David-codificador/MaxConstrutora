@@ -58,7 +58,7 @@ class BannerController extends Controller {
             }
         }
 
-        $dados['contador_banner'] = $this->contador_banner($vetor['contador_banner']);
+        
         $dados['administrador_id'] = Sessao::getAdministrador('id');
 
         if ($_FILES["imagem"]["name"] != "") {
@@ -426,21 +426,5 @@ class BannerController extends Controller {
         }
     }
 
-    public function contador_banner($contador_banner) {
-        switch ($contador_banner) {
-            case 1:
-                return "01";
-                break;
-            case 2:
-                return "02";
-                break;
-            case 3:
-                return "03";
-                break;
-            default:
-                return "|";
-                break;
-        }
-    }
 
 }

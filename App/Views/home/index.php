@@ -5,10 +5,12 @@
         <div id="rev_slider_206_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.1.1RC">
             <ul>
                 <!-- SLIDE  -->
+                
                 <?php
+                $i = 1;
                 foreach ($viewVar['banner'] as $item) {
                     ?>
-                    <li  data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="<?= $item['titulo'] ?>" data-param1="<?= $item['contador_banner'] ?>" >
+                    <li  data-transition="fadethroughdark" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="2000" data-rotate="0" data-saveperformance="off" data-title="<?= $item['titulo'] ?>" data-param1="<?= $i++ ?>" >
                         <!-- MAIN IMAGE -->
                         <img src="<?= IMAGEMSITE ?>/banners/<?= $item['imagem'] ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="3" class="rev-slidebg" data-no-retina>
                         <!-- LAYERS -->

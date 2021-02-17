@@ -18,7 +18,7 @@
             foreach ($viewVar['obras'] as $item) {
                 ?>
                 <div class="project-post buildings isolation <?= $item['categoria'] ?>" >
-                    <a href="#" class="zoom"><img src="<?= IMAGEMSITE ?>obras/<?= $item['imagem'] ?>" alt=""></a>
+                    <a href="<?= IMAGEMSITE ?>obras/<?= $item['imagem'] ?>" class="zoom"><img src="<?= IMAGEMSITE ?>obras/<?= $item['imagem'] ?>" alt=""></a>
                     <div class="hover-box">
                         <h2><a href=""><?= $item['titulo'] ?></a></h2>
                         <span><?= $item['sub_titulo'] ?></span>

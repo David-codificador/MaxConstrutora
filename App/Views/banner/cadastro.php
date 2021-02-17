@@ -33,16 +33,6 @@
                                             <input type="file" class="form-control" id="imagem" name="imagem" required="">
                                             <span>Imagem no tamanho de 1920px largura 780px de altura</span>
                                         </div>
-                                    </div>  
-                                     <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="categoria">Numero Banner <sup class="color-danger">*</sup></label>
-                                            <select class="form-control" id="contador_banner" name="contador_banner" required="">
-                                                <option value="01">01</option>
-                                                <option value="02">02</option>
-                                                <option value="03">03</option>
-                                            </select>
-                                        </div>
                                     </div>   
                                     <div class="col-md-4">
                                         <div class="form-group">

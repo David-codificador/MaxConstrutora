@@ -32,18 +32,7 @@
                                         <div class="col-md-12">
                                             <img src="<?= IMAGEMSITE ?>banners/<?= $viewVar['item']['imagem'] != '' ? $viewVar['item']['imagem'] : 'padrao.jpg' ?>" class="img-circle profile-img" width="10%" onclick="exibirImgBanerRotativo('<?= IMAGEMSITE ?>banners/<?= $viewVar['item']['imagem'] != '' ? $viewVar['item']['imagem'] : 'padrao.jpg' ?>')" >
                                         </div>
-                                    </div> 
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="contador_banner">Numero Banner <sup class="color-danger">*</sup></label>
-                                            <select class="form-control" id="contador_banner" name="contador_banner" required="">
-                                                <option value="01" <?= $viewVar['item']['contador_banner'] == 1 ? 'selected' : '' ?>>01</option>
-                                                <option value="02" <?= $viewVar['item']['contador_banner'] == 2 ? 'selected' : '' ?>>02</option>
-                                                <option value="03" <?= $viewVar['item']['contador_banner'] == 3 ? 'selected' : '' ?>>03</option>
-                                            </select>
-                                        </div>
-                                    </div>   
+                                    </div>  
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="titulo">Título </label>
