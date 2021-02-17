@@ -11,7 +11,7 @@ class ServicosController extends Controller {
         $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
 // Aqui colocar a paginação da parte de serviços!
         $bo = new \App\Models\BO\ServicosBO();
-     
+
         $condicao = "";
         $valoresCondicao = [];
 
@@ -22,8 +22,8 @@ class ServicosController extends Controller {
         $resultado = $bo->listarVetor($tabela, ["*"], null, null, $condicao, $valoresCondicao, $orderBy);
 
         $this->setViewParam('servicos', $resultado);
-        
-        
+
+
 
         $this->render("home/servicos", "Serviços", $css, $js, 3);
     }
@@ -183,4 +183,26 @@ class ServicosController extends Controller {
         $this->render('servicos/listar', "Listagem", $css, $js, 1);
     }
 
-}
+    public function listarAjax() {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $p = isset($_POST['pagina']) ? $_POST['pagina'] : 1;
+        $valoresCondicao = [];
+
+        $quantidade = 5;
+        $pagina = $p * $quantidade - $quantidade;
+
+        $bo = new \App\Models\BO\ServicosBO();
+        $registro = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], $quantidade, $pagina, '', [], ' id desc');
+
+          if ($registro) {
+                echo json_encode($registro);
+                exit();
+            } else {
+                echo json_encode(null);
+            }
+        }
+    }
+
+
