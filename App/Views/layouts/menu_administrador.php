@@ -113,6 +113,13 @@
                                     </ul>
                                 </li>
                                 <li class="has-children">
+                                    <a href="#"><i class="fa fa-puzzle-piece"></i> <span>Serviços</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li><a href="<?= LINK ?>servicos/cadastro"><i class="fa fa-plus-circle"></i> <span>Cadastro</span></a></li>
+                                        <li><a href="<?= LINK ?>servicos/listar"><i class="fa fa-bars"></i> <span>Listagem</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
                                     <a href="#"><i class="fa fa-headphones"></i> <span>Contato</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
                                         <li><a href="<?= LINK ?>contato/listar"><i class="fa fa-bars"></i> <span>Caixa de Entrada</span></a></li>

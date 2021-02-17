@@ -7,11 +7,11 @@ class Servicos{
     //Constante com informações de nome e descrição da tabela referente a está classe
     const TABELA = ['nome' => 'servicos', 'descricao' => 'Serviços'];
     //Campos existentes na tambela desta classe
-    const CAMPOS = ['id', 'nome_servico', 'titulo', 'texto', 'administrador_id'];
+    const CAMPOS = ['id', 'tipo_servico', 'titulo', 'texto', 'administrador_id'];
     //Informaçõs sobre os campos da tabela
     const CAMPOSINFO = [   
         'id' => ['tamanho' => null, 'obrigatorio' => false, 'descricao' => 'id'],
-        'nome_servico' => ['tamanho' => 45, 'obrigatorio' => true, 'descricao' => 'Nome Serviço'],
+        'tipo_servico' => ['tamanho' => 45, 'obrigatorio' => true, 'descricao' => 'Nome Serviço'],
         'titulo' => ['tamanho' => 50, 'obrigatorio' => true, 'descricao' => 'Título'],
         'texto' => ['tamanho' => null, 'obrigatorio' => true, 'descricao' => 'Texto'],
         'administrador_id' => ['tamanho' => null, 'obrigatorio' => true, 'descricao' => 'tipo do administrador']
@@ -20,7 +20,7 @@ class Servicos{
     
     //Variáveis privadas referentes aos campos da tabela
     private $id;
-    private $nome_servico;
+    private $tipo_servico;
     private $titulo;
     private $texto;
     private $administrador_id;
@@ -35,12 +35,13 @@ class Servicos{
     }
     
     //Funções de set e get
+   
     function getId() {
         return $this->id;
     }
 
-    function getNome_servico() {
-        return $this->nome_servico;
+    function getTipo_servico() {
+        return $this->tipo_servico;
     }
 
     function getTitulo() {
@@ -59,8 +60,8 @@ class Servicos{
         $this->id = $id;
     }
 
-    function setNome_servico($nome_servico) {
-        $this->nome_servico = $nome_servico;
+    function setTipo_servico($tipo_servico) {
+        $this->tipo_servico = $tipo_servico;
     }
 
     function setTitulo($titulo) {
