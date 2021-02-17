@@ -9,70 +9,22 @@ class ServicosController extends Controller {
     public function index() {
         $css = null;
         $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
-        
+// Aqui colocar a paginação da parte de serviços!
         $bo = new \App\Models\BO\ServicosBO();
-
-        if (!is_numeric($parametro[0])) {
-            $this->redirect('home/servicos/1/' . $parametro[0]);
-        }
-        $p = (isset($parametro[0]) or is_numeric($parametro[0])) ? $parametro[0] : 1;
-        $busca = (isset($parametro[1])) ? $parametro[1] : null;
-
-        $quantidade = 5;
-        $pagina = $p * $quantidade - $quantidade;
-
+     
         $condicao = "";
         $valoresCondicao = [];
-
-        if ($busca) {
-            $condicao .= " titulo like '%?%'";
-            array_push($valoresCondicao, "$busca");
-        }
 
         $orderBy = "titulo asc";
 
         $tabela = \App\Models\Entidades\Servicos::TABELA['nome'];
 
-        $resultado = $bo->listarVetor($tabela, ["*"], $quantidade, $pagina, $condicao, $valoresCondicao, $orderBy);
+        $resultado = $bo->listarVetor($tabela, ["*"], null, null, $condicao, $valoresCondicao, $orderBy);
 
         $this->setViewParam('servicos', $resultado);
-
-        $quanServicos = $bo->selecionar($tabela, ["count(id) as id"], null, null, $condicao, $valoresCondicao, $orderBy);
-
-        $quanPaginas = ceil($quanServicos->getId() / $quantidade);
-
-        if ($p > $quanPaginas and $p != 1) {
-            Sessao::gravaMensagem("Falha", "Página não encontrada", 2);
-            $this->redirect('home/servicos');
-        }
-
-        if ($p < 5) {
-            $i = 0;
-            $fim = $quanPaginas < 5 ? $quanPaginas : 5;
-        } else {
-            if ($p < $quanPaginas - 2) {
-                $i = $p - 3;
-                $fim = $p + 2;
-            } else {
-                $i = $quanPaginas - 5;
-                $fim = $quanPaginas;
-            }
-        }
-
-        $paginacao = array(
-            'quanReceita' => $quanServicos->getId(),
-            'quanPaginas' => $quanPaginas,
-            'inicio' => $i,
-            'fim' => $fim,
-            'pagina' => $p,
-            'anterior' => $p - 1,
-            'proxima' => $p + 1,
-            'busca' => $busca
-        );
-
-        $this->setViewParam('paginacao', $paginacao);     
         
         
+
         $this->render("home/servicos", "Serviços", $css, $js, 3);
     }
 
@@ -81,8 +33,8 @@ class ServicosController extends Controller {
     //   $js = null;
     //   $this->render("home/redePluvial", "Rede Pluvial", $css, $js, 3);
     //}
-    
-      public function cadastro() {
+
+    public function cadastro() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
@@ -94,7 +46,6 @@ class ServicosController extends Controller {
         Sessao::limpaFormulario();
     }
 
-    
     public function inserir() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
@@ -116,7 +67,7 @@ class ServicosController extends Controller {
             }
         }
 
-         $dados['administrador_id'] = Sessao::getAdministrador('id');
+        $dados['administrador_id'] = Sessao::getAdministrador('id');
 
 
         $id = $bo->inserir(\App\Models\Entidades\Servicos::TABELA['nome'], $dados, \App\Models\Entidades\Servicos::CAMPOSINFO);
@@ -154,15 +105,15 @@ class ServicosController extends Controller {
             $this->redirect('servicos/listar');
         }
     }
-    
+
     public function listar($parametro) {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
         $css = ' ';
         $js = '';
-           
-       
+
+
 
         $bo = new \App\Models\BO\ServicosBO();
 

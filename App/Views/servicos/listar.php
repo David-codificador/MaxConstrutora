@@ -2,15 +2,15 @@
     <div class="container-fluid">
         <div class="row page-title-div">
             <div class="col-md-12">
-                <h2 class="title">Listagem de Avisos</h2>
+                <h2 class="title">Listagem de Serviços</h2>
                 <p class="sub-title"></p>
             </div>
         </div>
         <div class="row breadcrumb-div">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                    <li><a href="<?= LINK ?>home/painelAvisos"><i class="fa fa-home"></i> Início</a></li>
-                    <li><a href="<?= LINK ?>servicos">Aministrador</a></li>
+                    <li><a href="<?= LINK ?>administrador/"><i class="fa fa-home"></i> Início</a></li>
+                    <li><a href="<?= LINK ?>servicos/listar">Serviços</a></li>
                     <li class="active">Lista</li>
                 </ul>
             </div>

@@ -2,15 +2,15 @@
     <div class="container-fluid">
         <div class="row page-title-div">
             <div class="col-md-12">
-                <h2 class="title">Cadastro de Obras</h2>
+                <h2 class="title">Cadastro de Serviço</h2>
                 <p class="sub-title"></p>
             </div>
         </div>
         <div class="row breadcrumb-div">
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                    <li><a href="<?= LINK ?>obras"><i class="fa fa-home"></i> Início</a></li>
-                    <li><a>Obras</a></li>
+                    <li><a href="<?= LINK ?>servicos"><i class="fa fa-home"></i> Início</a></li>
+                    <li><a>Serviços</a></li>
                     <li class="active">Cadastro</li>
                 </ul>
             </div>
