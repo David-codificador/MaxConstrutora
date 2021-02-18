@@ -66,19 +66,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="offer-post">
-                    <h2><a href="#"> <i class="fa fa-bar-chart-o"></i> NOSSA MISSÃO</a></h2>
+                    <h2><a href=""> <i class="fa fa-bar-chart-o"></i> NOSSA MISSÃO</a></h2>
                     <p>Construir e realizar obras com qualidade, em parceria com fornecedores e colaboradores, tendo como objetivo a satisfação do cliente.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="offer-post">
-                    <h2><a href="#"><i class="fa fa-bullseye"></i> VISÃO</a></h2>
+                    <h2><a href=""><i class="fa fa-bullseye"></i> VISÃO</a></h2>
                     <p>Ser referência nacional no segmento de construção civil.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="offer-post">
-                    <h2><a href="#"><i class="fa fa-star"></i>VALORES</a></h2>
+                    <h2><a href=""><i class="fa fa-star"></i>VALORES</a></h2>
                     <p>Qualidade: Total. Cliente: Satisfeito. Integridade em tudo que faz. Confiabilidade na empresa, nos clientes, nos colaboradores, nos fornecedores.</p>
                 </div>
             </div>
