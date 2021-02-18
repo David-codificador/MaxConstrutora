@@ -5,7 +5,7 @@
         <div id="rev_slider_206_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.1.1RC">
             <ul>
                 <!-- SLIDE  -->
-                
+
                 <?php
                 $i = 1;
                 foreach ($viewVar['banner'] as $item) {
@@ -66,23 +66,20 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="offer-post">
-                    <a href="construction.html"><img src="upload/others/1.jpg" alt=""></a>
-                    <h2><a href="construction.html"> <i class="fa fa-cubes"></i> Construção</a></h2>
-                    <p>A Maxx Construtora, leva a sério o seu compromissão com seus clientes, e se compromete em entregar seus serviços com qualidade.</p>
+                    <h2><a href="#"> <i class="fa fa-bar-chart-o"></i> NOSSA MISSÃO</a></h2>
+                    <p>Construir e realizar obras com qualidade, em parceria com fornecedores e colaboradores, tendo como objetivo a satisfação do cliente.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="offer-post">
-                    <a href="building.html"><img src="upload/others/2.jpg" alt=""></a>
-                    <h2><a href="building.html"><i class="fa fa-building"></i> Building</a></h2>
-                    <p>A nice home deck provides a beautiful and relaxing spot for you and your family to enjoy the outdoors. Our professional handymen are ready to help you with all your deck repair and deck maintenance needs.</p>
+                    <h2><a href="#"><i class="fa fa-bullseye"></i> VISÃO</a></h2>
+                    <p>Ser referência nacional no segmento de construção civil.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="offer-post">
-                    <a href="electricy.html"><img src="upload/others/3.jpg" alt=""></a>
-                    <h2><a href="electricy.html"><i class="fa fa-bolt"></i> Electricy installation</a></h2>
-                    <p>A nice home deck provides a beautiful and relaxing spot for you and your family to enjoy the outdoors. Our professional handymen are ready to help you with all your deck repair and deck maintenance needs.</p>
+                    <h2><a href="#"><i class="fa fa-star"></i>VALORES</a></h2>
+                    <p>Qualidade: Total. Cliente: Satisfeito. Integridade em tudo que faz. Confiabilidade na empresa, nos clientes, nos colaboradores, nos fornecedores.</p>
                 </div>
             </div>
         </div>
@@ -92,228 +89,54 @@
 
 <!-- projects 
         ================================================== -->
+
 <section class="projects-section">
     <div class="container">
         <div class="title-section">
-            <h2>Portfolio</h2>
-            <h1>Our - Latest Projects</h1>
+            <h2>PORTFÓLIO</h2>
+            <h1>NOSSOS - ÚLTIMOS PROJETOS</h1>
         </div>
-        <ul class="filter">
-            <li><a class="active" href="#" data-filter="*">Show All</a></li>
-            <li><a href="#" data-filter=".buildings">Buildings</a></li>
-            <li><a href="#" data-filter=".interior">Interior</a></li>
-            <li><a href="#" data-filter=".energy">Energy</a></li>
-            <li><a href="#" data-filter=".isolation">Isolation</a></li>
+        <ul class="filter" >
+            <li><a class="active" href="#" data-filter="*">Todos</a></li>
+            <li><a href="" data-filter=".1">Construção Civil</a></li>
+            <li><a href="" data-filter=".2">Meio Fio</a></li>
+            <li><a href="" data-filter=".3">Sarjeta</a></li>
+            <li><a href="" data-filter=".4">Rede Pluvial</a></li>
+            <li><a href="" data-filter=".5">Rede Esgoto</a></li>
         </ul>
-        <div class="project-box iso-call">
-            <div class="project-post buildings isolation">
-                <a href="upload/projects/1.jpg" class="zoom"><img src="upload/projects/1.jpg" alt=""></a>
-                <div class="hover-box">
-                    <h2><a href="single-project.html">Elegant Building</a></h2>
-                    <span>bulding, house</span>
-                </div>
-            </div>
-            <div class="project-post interior">
-                <a href="upload/projects/2.jpg" class="zoom"><img src="upload/projects/2.jpg" alt=""></a>
-                <div class="hover-box">
-                    <h2><a href="single-project.html">Beatiful House</a></h2>
-                    <span>interior</span>
-                </div>
-            </div>
-            <div class="project-post buildings isolation">
-                <a href="upload/projects/3.jpg" class="zoom"><img src="upload/projects/3.jpg" alt=""></a>
-                <div class="hover-box">
-                    <h2><a href="single-project.html">Classic House</a></h2>
-                    <span>bulding, isolation</span>
-                </div>
-            </div>
-            <div class="project-post buildings">
-                <a href="upload/projects/4.jpg" class="zoom"><img src="upload/projects/4.jpg" alt=""></a>
-                <div class="hover-box">
-                    <h2><a href="single-project.html">Modern and trending house</a></h2>
-                    <span>bulding</span>
-                </div>
-            </div>
-            <div class="project-post interior isolation">
-                <a href="upload/projects/5.jpg" class="zoom"><img src="upload/projects/5.jpg" alt=""></a>
-                <div class="hover-box">
-                    <h2><a href="single-project.html">Afarist Building</a></h2>
-                    <span>interior, isolation</span>
-                </div>
-            </div>
-            <div class="project-post energy">
-                <a href="upload/projects/6.jpg" class="zoom"><img src="upload/projects/6.jpg" alt=""></a>
-                <div class="hover-box">
-                    <h2><a href="single-project.html">traditional Building</a></h2>
-                    <span>energy</span>
-                </div>
-            </div>
+
+        <div class="project-box iso-call " >
+            <?php
+            foreach ($viewVar['obras'] as $item) {
+                ?>
+                <div class="project-post buildings isolation <?= $item['categoria'] ?>" >
+                    <a href="<?= IMAGEMSITE ?>obras/<?= $item['imagem'] ?>" class="zoom"><img src="<?= IMAGEMSITE ?>obras/<?= $item['imagem'] ?>" alt=""></a>
+                    <div class="hover-box">
+                        <h2><a href=""><?= $item['titulo'] ?></a></h2>
+                        <span><?= $item['sub_titulo'] ?></span>
+                    </div>
+                </div>  
+                <?php
+            }
+            ?>
         </div>
+
     </div>
 </section>
 <!-- End projects -->
-
-<!-- about section 
-        ================================================== -->
-<section class="about-alternative-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <!-- Nav tabs -->
-                <div class="tab-posts-box">
-                    <ul class="nav nav-tabs" id="myTab">
-                        <li class="active">
-                            <a href="#option1" data-toggle="tab">Building</a>
-                        </li>
-                        <li>
-                            <a href="#option2" data-toggle="tab">Renovation</a>
-                        </li>
-                        <li>
-                            <a href="#option3" data-toggle="tab">Energy</a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="option1">
-                            <img src="upload/others/1.jpg" alt="">
-
-                            <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                        </div>
-                        <div class="tab-pane" id="option2">
-                            <img src="upload/others/2.jpg" alt="">
-
-                            <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. ullamco laboris nisi ut aliquip ex ea commodo.</p>
-                        </div>
-                        <div class="tab-pane" id="option3">
-                            <img src="upload/others/3.jpg" alt="">
-
-                            <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. ullamco laboris nisi ut aliquip ex ea commodo.</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="accordion-box">
-                    <div class="accord-elem active">
-                        <div class="accord-title">
-                            <a class="accord-link" href="#"></a>
-                            <h2>Vivamus vestibulum nulla nec ante.</h2>
-                        </div>
-                        <div class="accord-content">
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque.</p>
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque.</p>
-                        </div>
-                    </div>
-
-                    <div class="accord-elem">
-                        <div class="accord-title">
-                            <a class="accord-link" href="#"></a>
-                            <h2>Morbi in sem quis dui placerat ornare. </h2>
-                        </div>
-                        <div class="accord-content">
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque.</p>
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque.</p>
-                        </div>
-                    </div>
-
-                    <div class="accord-elem">
-                        <div class="accord-title">
-                            <a class="accord-link" href="#"></a>
-                            <h2>Lorem ipsum dolor sit amet. </h2>
-                        </div>
-                        <div class="accord-content">
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque.</p>
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque.</p>
-                        </div>
-                    </div>
-
-                    <div class="accord-elem">
-                        <div class="accord-title">
-                            <a class="accord-link" href="#"></a>
-                            <h2>Vivamus vestibulum nulla nec ante.</h2>
-                        </div>
-                        <div class="accord-content">
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque.</p>
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque.</p>
-                        </div>
-                    </div>
-
-                    <div class="accord-elem">
-                        <div class="accord-title">
-                            <a class="accord-link" href="#"></a>
-                            <h2>Morbi in sem quis dui placerat ornare. </h2>
-                        </div>
-                        <div class="accord-content">
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque.</p>
-                            <p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="second-article">
-                    <img src="upload/others/3.jpg" alt="">
-                    <h2>Who we are</h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- End about section -->
-
-<!-- testimonial-section 
-        ================================================== -->
-<section class="testimonial-section">
-    <div class="container">
-
-        <div class="title-section">
-            <h1>Clients <span>Testimonials</span></h1>
-        </div>
-
-        <div class="testimonial-box">
-            <ul class="bxslider">
-                <li>
-                    <h2>John Smith</h2>
-                    <span>Konstrukt Chief</span>
-                    <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. <br> Aenean dignissim pellentesque felis. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a,<br> ultricies in, diam. Sed arcu. Cras consequat.</p>
-                </li>
-                <li>
-                    <h2>Besim Dauti</h2>
-                    <span>Project Menager</span>
-                    <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. <br> Aenean dignissim pellentesque felis. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a,<br> ultricies in, diam. Sed arcu. Cras consequat.</p>
-                </li>
-                <li>
-                    <h2>Quan Ngyen</h2>
-                    <span>Electricity Engineer</span>
-                    <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. <br> Aenean dignissim pellentesque felis. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a,<br> ultricies in, diam. Sed arcu. Cras consequat.</p>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-<!-- End testimonial section -->
 
 <!-- news-section 
         ================================================== -->
 <section class="news-section">
     <div class="container">
         <div class="title-section">
-            <h2>Blog</h2>
-            <h1>Our - Latest News</h1>
+            <h2>Segmentos</h2>
+            <h1>Nossos Serviços</h1>
         </div>
         <div class="news-box">
             <div class="row">
                 <div class="col-md-4">
                     <div class="news-post">
-                        <img src="upload/blog/b1.jpg" alt="">
                         <h2><a href="single-post.html">We construct buildings</a></h2>
                         <span>22 Jannuary 2015</span>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -323,7 +146,6 @@
                 </div>
                 <div class="col-md-4">
                     <div class="news-post">
-                        <img src="upload/blog/b2.jpg" alt="">
                         <h2><a href="single-post.html">We work on area</a></h2>
                         <span>22 Jannuary 2015</span>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -333,7 +155,6 @@
                 </div>
                 <div class="col-md-4">
                     <div class="news-post">
-                        <img src="upload/blog/b3.jpg" alt="">
                         <h2><a href="single-post.html">We build objects</a></h2>
                         <span>22 Jannuary 2015</span>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -348,40 +169,3 @@
 </section>
 <!-- End news section -->
 
-<!-- clients-section 
-        ================================================== -->
-<section class="clients-quote-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-
-                <div class="map-holder">
-                    <div id="map"></div>
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-                <div class="quote-box">
-                    <form id="contact-form">
-                        <h1>Free Quote Form</h1>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input name="name" id="name" type="text" placeholder="Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input name="mail" id="mail" type="text" placeholder="Email">
-                            </div>
-                        </div>
-                        <textarea name="comment" id="comment" placeholder="Message"></textarea>
-                        <input type="submit" id="submit_contact" value="Send Message">
-                        <div id="msg" class="message"></div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-<!-- End clients section -->
