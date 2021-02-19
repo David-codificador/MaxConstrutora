@@ -4,14 +4,6 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="footer-widget">
-                        <h2>About Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna.</p>
-                        <img src="images/footer-logo.png" alt="">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="footer-widget">
                         <h2>Tags</h2>
                         <ul class="tag-list">
                             <li><a href="#">Building</a></li>
@@ -24,23 +16,23 @@
                 </div>
                 <div class="col-md-3">
                     <div class="footer-widget">
-                        <h2>Navigation</h2>
+                        <h2>NAVEGAÇÃO</h2>
                         <ul class="navigation">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?= LINK ?>">INÍCIO</a></li>
+                            <li><a href="<?= LINK ?>sobre">SOBRE NÓS</a></li>
+                            <li><a href="<?= LINK ?>servicos">SERVIÇOS</a></li>
+                            <li><a href="<?= LINK ?>obras">OBRAS</a></li>
+                            <li><a href="<?= LINK ?>contato">CONTATO</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="footer-widget info-widget">
-                        <h2>Info</h2>
-                        <p class="first-par">You can contact or visit us during working time.</p>
+                        <h2>INFORMAÇÕES</h2>
+                        <p class="first-par">Entre em contato conosco!. Retornaremos o mais breve possível.</p>
                         <p><span>Tel: </span> 1234 - 5678 - 9012</p>
-                        <p><span>Email: </span> support@konstukt.com</p>
-                        <p><span>Working Hours: </span> 8:00 a.m - 17:00 a.m</p>
+                        <p><span>Email: </span> maxuel@maxxconstrutora.com.br</p>
+                        <p><span>Horário de Trabalho: </span> 7:00 a.m - 18:00 p.m</p>
                     </div>
                 </div>
             </div>
@@ -57,37 +49,37 @@
 
 <script type="text/javascript" src="<?= JSSITE ?>jquery.min.js"></script>
 <script type="text/javascript" src="<?= JSSITE ?>jquery.migrate.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>bootstrap.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>jquery.imagesloaded.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>jquery.isotope.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>retina-1.1.0.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>bootstrap.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>jquery.imagesloaded.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>jquery.isotope.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>retina-1.1.0.min.js"></script>
 
 <!-- REVOLUTION JS FILES -->
-<script type="text/javascript" src="<?=JSSITE?>jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>jquery.themepunch.revolution.min.js"></script>
 
 <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  
         (Load Extensions only on Local File Systems !  
         The following part can be removed on Server for On Demand Loading) -->	
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.actions.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.carousel.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.kenburn.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.layeranimation.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.migration.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.navigation.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.parallax.min.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>extensions/revolution.extension.slideanims.min.js"></script>
-<!--<script type="text/javascript" src="<?=JSSITE?>gmap3.min.js"></script>-->
-<script type="text/javascript" src="<?=JSSITE?>script.js"></script>
-<script type="text/javascript" src="<?=JSSITE?>ini.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>extensions/revolution.extension.slideanims.min.js"></script>
+<!--<script type="text/javascript" src="<?= JSSITE ?>gmap3.min.js"></script>-->
+<script type="text/javascript" src="<?= JSSITE ?>script.js"></script>
+<script type="text/javascript" src="<?= JSSITE ?>ini.js"></script>
 
 <?= $js ?>
 <?= $arquivoJS ?>
 <!-- END REVOLUTION SLIDER -->
 <script type="text/javascript">
-    
+
     var tpj = jQuery;
 
     var revapi206;
@@ -97,7 +89,7 @@
         } else {
             revapi206 = tpj("#rev_slider_206_1").show().revolution({
                 sliderType: "standard",
-                jsFileLocation: "<?=JSSITE?>",
+                jsFileLocation: "<?= JSSITE ?>",
                 sliderLayout: "fullscreen",
                 dottedOverlay: "none",
                 delay: 9000,
