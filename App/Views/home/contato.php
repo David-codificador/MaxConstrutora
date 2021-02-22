@@ -1,4 +1,8 @@
-  <hr>
+<div class="corpo">
+   <hr> 
+</div> 
+
+
 
 <!-- comment --><!-- contact section 
                         ================================================== -->

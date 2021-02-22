@@ -183,26 +183,56 @@ class ServicosController extends Controller {
         $this->render('servicos/listar', "Listagem", $css, $js, 1);
     }
 
-    public function listarAjax() {
-        $this->validaAdministrador();
-        $this->nivelAcesso(2);
-
-        $p = isset($_POST['pagina']) ? $_POST['pagina'] : 1;
-        $valoresCondicao = [];
-
-        $quantidade = 5;
-        $pagina = $p * $quantidade - $quantidade;
-
+    public function tipoAjax() {
         $bo = new \App\Models\BO\ServicosBO();
-        $registro = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], $quantidade, $pagina, '', [], ' id desc');
 
-          if ($registro) {
-                echo json_encode($registro);
-                exit();
-            } else {
-                echo json_encode(null);
-            }
+        $lista = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['id', 'tipo_servico'], null, null, '', [], '');
+
+        if ($lista) {
+            $retorno = [
+                'status' => 1,
+                'msg' => 'Serviços encontrados!',
+                'retorno' => $lista
+            ];
+        } else {
+            $retorno = [
+                'status' => 0,
+                'msg' => 'Serviços não encontrados!'
+            ];
         }
+
+        echo json_encode($retorno);
+        exit();
     }
 
+    public function buscarInfo() {
+        if (isset($_POST['id']) and is_numeric($_POST['id'])) {
 
+
+            $bo = new \App\Models\BO\ServicosBO();
+
+            $item = $bo->selecionarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 'id = ?', [$_POST['id']], '');
+
+            if ($item) {
+                $retorno = [
+                    'status' => 1,
+                    'msg' => 'Serviço encontrado!',
+                    'retorno' => $item
+                ];
+            } else {
+                $retorno = [
+                    'status' => 0,
+                    'msg' => 'Serviço não encontrado!'
+                ];
+            }
+        } else {
+            $retorno = [
+                'status' => 0,
+                'msg' => 'Parametros Incorretos!'
+            ];
+        }
+        echo json_encode($retorno);
+        exit();
+    }
+
+}

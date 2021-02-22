@@ -1,5 +1,6 @@
-<hr>
-
+<div class="corpo">
+   <hr> 
+</div> 
 <!-- projects 
         ================================================== -->
 <section class="projects-section">

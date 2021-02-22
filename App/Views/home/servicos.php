@@ -1,4 +1,6 @@
-<hr>
+<div class="corpo">
+    <hr> 
+</div> 
 
 <!-- services-offer 
         ================================================== -->
@@ -7,22 +9,24 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="side-navigation" >
-                    <ul class="side-navigation-list" id="listarServicos">
-                        <li><a  href="<?= LINK ?>servicos/redePluvial">Rede Pluvial</a></li>
-                        <li><a class="active" href="<?= LINK ?>servicos">Construção Civil</a></li>
-                        <li><a href="building.html">Meio Fio</a></li>
-                        <li><a href="electricy.html">Sarjeta</a></li>
-                        <li><a href="repair.html">Rede Esgoto</a></li>
-                        <li><a href="#">Boeiros</a></li>
-                        <li><a href="#">Canaletas</a></li>
+                    <ul class="side-navigation-list">
+                        <div id="tipo_ajax">
+                            <li><a  href="<?= LINK ?>servicos/redePluvial">Rede Pluvial</a></li>
+                            <li><a class="active" href="<?= LINK ?>servicos">Construção Civil</a></li>
+                            <li><a href="building.html">Meio Fio</a></li>
+                            <li><a href="electricy.html">Sarjeta</a></li>
+                            <li><a href="repair.html">Rede Esgoto</a></li>
+                            <li><a href="#">Boeiros</a></li>
+                            <li><a href="#">Canaletas</a></li>
+                        </div>
                     </ul>
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="offer-post">
+                <div class="offer-post" id="resposta_ajax">
                     <!--<a href="#"><img src="upload/others/con1.jpg" alt=""></a>-->
                     <h2>Rede Pluvial </h2>
-                   
+
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

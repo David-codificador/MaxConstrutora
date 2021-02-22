@@ -1,4 +1,6 @@
-<hr>
+<div class="corpo">
+   <hr> 
+</div> 
 <section class="about-alternative-section">
 
     <div class="container">
