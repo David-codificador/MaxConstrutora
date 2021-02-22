@@ -93,7 +93,7 @@ class ServicosController extends Controller {
                 'tipo' => 1,
                 'administrador' => Sessao::getAdministrador('id'),
                 'campos' => $x,
-                'tabela' => \App\Models\Entidades\Servicos::TABELA['servicos'],
+                'tabela' => \App\Models\Entidades\Servicos::TABELA['descricao'],
                 'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou o cadastro de um novo Servico'
             ];
 
@@ -111,7 +111,7 @@ class ServicosController extends Controller {
         $this->nivelAcesso(2);
 
         $css = ' ';
-        $js = '';
+        $js = '<script src="' . JSTEMPLATE . 'bootstrap-confirmation/bootstrap-confirmation.min.js"></script>';
 
 
 
@@ -183,6 +183,170 @@ class ServicosController extends Controller {
         $this->render('servicos/listar', "Listagem", $css, $js, 1);
     }
 
+    public function visualizar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+
+            $bo = new \App\Models\BO\ServicosBO();
+
+            $tabela = \App\Models\Entidades\Servicos::TABELA['nome'];
+
+            $servicos = $bo->selecionarVetor($tabela, ['*'], "id = ?", [$id], null);
+
+            if ($servicos) {
+                
+                $css = '';
+                $js = '';
+
+
+                $this->setViewParam('item', $servicos);
+                $this->render('servicos/visualizar', "Visualizar", $css, $js, 1);
+            } else {
+                Sessao::gravaMensagem("Falha", "servico não encontrado", 2);
+                $this->redirect('servicos/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+            $this->redirect('servicos/listar');
+        }
+    }
+    
+ public function editar($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+
+            $bo = new \App\Models\BO\ServicosBO();
+            $servicos = $bo->selecionarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], "id = ?", [$id], null);
+
+            if ($servicos) {
+                $css = '';
+                $js = '';
+
+                $this->setViewParam('item', $servicos);
+
+                $this->render('servicos/editar', 'Editar Serviço', $css, $js, 1);
+            } else {
+                Sessao::gravaMensagem("Falha", "Serviço não encontrado", 2);
+                $this->redirect('servicos/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem  ao esperado", 3);
+            $this->redirect('servicos/listar');
+        }
+    } 
+    
+       public function salvar() {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+        $id = $_POST['servicos'];
+
+        if (is_numeric($id)) {
+            $bo = new \App\Models\BO\ServicosBO();
+
+            $vetor = $_POST;
+
+            $dados = array();
+            $campus = \App\Models\Entidades\Servicos::CAMPOS;
+
+            foreach ($vetor as $indice => $valor) {
+                if (in_array($indice, $campus)) {
+                    if ($vetor[$indice] == '') {
+                        $dados[$indice] = "null";
+                    } else {
+                        $dados[$indice] = $vetor[$indice];
+                    }
+                }
+            }
+
+            $resultado = $bo->editar(\App\Models\Entidades\Servicos::TABELA['nome'], $dados, "id = ?", [$id], 1, \App\Models\Entidades\Servicos::CAMPOSINFO);
+            
+            if (Sessao::existeMensagem() or $resultado == FALSE) {
+                if (!Sessao::existeMensagem()) {
+                    Sessao::gravaMensagem($vetor['descricao'], "Serviço sem edição", 2);
+                }
+
+                $this->redirect('servicos/listar');
+            } else {
+                
+                $x = '';
+
+                foreach ($dados as $indice => $value) {
+                    if ($value == 'null') {
+                        $value = '';
+                    }
+
+                    if ($resultado[$indice] != $value) {
+                        $x .= "campo " . \App\Models\Entidades\Servicos::CAMPOSINFO[$indice]['descricao'] . ' editado de: "' . $resultado[$indice] . '" para "' . $value . '"<br>';
+                    }
+                }
+
+                $info = [
+                    'tipo' => 2,
+                    'administrador' => Sessao::getAdministrador('id'),
+                    'campos' => $x,
+                    'tabela' => \App\Models\Entidades\Servicos::TABELA['descricao'],
+                    'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a edição das informações de um Serviço.'
+                ];
+
+                $this->inserirAuditoria($info);
+
+                Sessao::gravaMensagem("Sucesso", "Serviço " . $resultado['tipo_servico'] . ", editado", 1);
+
+                $this->redirect('servicos/listar');
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+        }
+
+        $this->redirect('servicos/listar');
+    }
+    
+    
+    public function excluir($parametro) {
+        $this->validaAdministrador();
+        $this->nivelAcesso(2);
+
+        $id = $parametro[0];
+
+        if (is_numeric($id)) {
+            $bo = new \App\Models\BO\ServicosBO();
+            $tabela = \App\Models\Entidades\Servicos::TABELA['nome'];
+
+            $resposta = $bo->excluir($tabela, "id = ?", [$id], 1);
+
+            if ($resposta) {
+
+                Sessao::gravaMensagem("Serviço excluido", "Sucesso", 1);
+
+                $info = [
+                    'tipo' => 4,
+                    'administrador' => Sessao::getAdministrador('id'),
+                    'campos' => "-",
+                    'tabela' => \App\Models\Entidades\Servicos::TABELA['descricao'],
+                    'descricao' => 'O ' . Sessao::getAdministrador('tipo_administrador_nome') . ' ' . Sessao::getAdministrador("nome") . ', efetuou a exclusão de um serviço ' . $resposta['tipo_servico']
+                ];
+
+                $this->inserirAuditoria($info);
+            } else {
+                if (!Sessao::existeMensagem()) {
+                    Sessao::gravaMensagem("Falha", "Serviço não excluido", 2);
+                }
+            }
+        } else {
+            Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem ao esperado", 3);
+        }
+
+        $this->redirect('servicos/listar');
+    }
+    
     public function tipoAjax() {
         $bo = new \App\Models\BO\ServicosBO();
 

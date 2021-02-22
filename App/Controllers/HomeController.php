@@ -19,6 +19,12 @@ class HomeController extends Controller {
         
         $obras = $bo->listarVetor(\App\Models\Entidades\Obras::TABELA['nome'], ['*'], 6, null, null, [], "id desc");
         $this->setViewParam('obras', $obras);
+        
+        $bo = new \App\Models\BO\ServicosBO();
+        
+        $servicos = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 3, null, null, [], "rand()");
+        $this->setViewParam('servicos', $servicos);
+        
 
         $this->render("home/index", "Início", $css, $js, 3);
     }

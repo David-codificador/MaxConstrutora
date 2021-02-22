@@ -27,7 +27,7 @@
                                 <div class="row ">
                                     <div class="form-group col-sm-12 col-md-8">
                                         <h4><?= $viewVar['paginacao']['quanServicos'] ?> Registro<?= $viewVar['paginacao']['quanServicos'] == 1 ? '' : 's' ?></h4>
-                                        <a href="<?= LINK ?>avisos/cadastro" class="btn bg-gray btn-wide"><i class="fa fa-plus"></i>Cadastrar</a>
+                                        <a href="<?= LINK ?>servicos/cadastro" class="btn bg-gray btn-wide"><i class="fa fa-plus"></i>Cadastrar</a>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4">
                                         <div class="col-sm-12 pt-30">
@@ -58,7 +58,7 @@
                                                     <ul class="dropdown-menu" aria-labelledby="menu<?= $item['id'] ?>">
                                                         <li class="dropdown-header">Opções</li>
                                                         <li><a href="<?= LINK ?>servicos/visualizar/<?= $item['id'] ?>"><i class="fa fa-search"></i> Visualizar</a></li>
-                                                        <li><a href="<?= LINK ?>servicos/excluir/<?= $item['id'] ?>/0" data-toggle="confirmation" data-placement="top" data-btn-ok-label="Excluir" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Cancelar" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" data-title="Confirmação"><i class="fa fa-trash-o color-danger"></i> E Excluir</a></li>
+                                                        <li><a href="<?= LINK ?>servicos/excluir/<?= $item['id'] ?>/0" data-toggle="confirmation" data-placement="top" data-btn-ok-label="Excluir" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Cancelar" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" data-title="Confirmação"><i class="fa fa-trash-o color-danger"></i> Excluir</a></li>
                                                     </ul>
                                                 </div>
                                             </td>

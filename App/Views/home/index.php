@@ -135,33 +135,20 @@
         </div>
         <div class="news-box">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="news-post">
-                        <h2><a href="single-post.html">We construct buildings</a></h2>
-                        <span>22 Jannuary 2015</span>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="single-post.html">Continue Reading...</a>
+                <?php
+                foreach ($viewVar['servicos'] as $item) {
+                    ?>
+                    <div class="col-md-4">
+                        <div class="news-post">
+                            <h2><a href="single-post.html"><?= $item['tipo_servico'] ?></a></h2>
+                            <span></span>
+                            <p><?= $item['texto'] ?></p>
+                            <a href="single-post.html">CONTINUE LENDO...</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="news-post">
-                        <h2><a href="single-post.html">We work on area</a></h2>
-                        <span>22 Jannuary 2015</span>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="single-post.html">Continue Reading...</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="news-post">
-                        <h2><a href="single-post.html">We build objects</a></h2>
-                        <span>22 Jannuary 2015</span>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="single-post.html">Continue Reading...</a>
-                    </div>
-                </div>
+                      <?php
+                    }
+                    ?>
             </div>
         </div>
 
