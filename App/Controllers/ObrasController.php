@@ -355,6 +355,12 @@ class ObrasController extends Controller {
             case 5:
                 return "Rede Esgoto";
                 break;
+            case 6:
+                return "Reservatório";
+                break;
+            case 7:
+                return "Elevatória de Esgoto";
+                break;
             default:
                 return "Outros";
                 break;

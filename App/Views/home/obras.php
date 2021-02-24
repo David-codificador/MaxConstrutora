@@ -12,6 +12,8 @@
             <li><a href="" data-filter=".3">Sarjeta</a></li>
             <li><a href="" data-filter=".4">Rede Pluvial</a></li>
             <li><a href="" data-filter=".5">Rede Esgoto</a></li>
+            <li><a href="" data-filter=".6">Reservatório</a></li>
+            <li><a href="" data-filter=".7">Elevatória de Esgoto</a></li>
         </ul>
 
         <div class="project-box iso-call " >

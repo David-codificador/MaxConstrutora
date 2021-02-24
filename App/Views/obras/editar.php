@@ -55,7 +55,9 @@
                                                     <option value="2" <?=$viewVar['item']['categoria'] == 2 ? 'selected':''?>>Meio Fio</option> 
                                                     <option value="3" <?=$viewVar['item']['categoria'] == 3 ? 'selected':''?>>Sarjeta</option>
                                                     <option value="4" <?=$viewVar['item']['categoria'] == 4 ? 'selected':''?>>Rede Pluvial</option>
-                                                    <option value="4" <?=$viewVar['item']['categoria'] == 5 ? 'selected':''?>>Rede Esgoto</option>
+                                                    <option value="5" <?=$viewVar['item']['categoria'] == 5 ? 'selected':''?>>Rede Esgoto</option>
+                                                    <option value="6" <?=$viewVar['item']['categoria'] == 6 ? 'selected':''?>>Reservatório</option>
+                                                    <option value="7" <?=$viewVar['item']['categoria'] == 7 ? 'selected':''?>>Elevatória de Esgoto</option>
                                                 </select>
                                             </div>
                                         </div>                                    

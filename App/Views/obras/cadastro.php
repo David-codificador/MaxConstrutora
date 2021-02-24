@@ -55,6 +55,8 @@
                                                 <option value="3">Sarjeta</option>
                                                 <option value="4">Rede Pluvial</option>
                                                 <option value="5">Rede Esgoto</option>
+                                                <option value="6">Reservatório</option>
+                                                <option value="7">Elevatória de Esgoto</option>
                                             </select>
                                         </div>
                                     </div>                                    
