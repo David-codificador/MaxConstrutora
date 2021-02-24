@@ -2,6 +2,7 @@
     <hr> 
 </div> 
 
+<input type="hidden" id="selecao_id" value="<?=$viewVar['id']?>" />
 <!-- services-offer 
         ================================================== -->
 <section class="services-offer-section">

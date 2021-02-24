@@ -16,14 +16,22 @@ function buscarTipo() {
                 var div = '';
 
                 for (i = 0; i < dados.retorno.length; i++) {
-                    if (i == 0) {
-                        buscarInfo(dados.retorno[i].id);
-                        div += '<li><a class="active" onclick="buscarInfo(' + dados.retorno[i].id + ', $(this));">' + dados.retorno[i].tipo_servico + ' </a></li>';
+                    if ($("#selecao_id").val() != ' ') {
+                        if (dados.retorno[i].id == $("#selecao_id").val()) {
+                            buscarInfo(dados.retorno[i].id);
+                            div += '<li><a class="active" onclick="buscarInfo(' + dados.retorno[i].id + ', $(this));">' + dados.retorno[i].tipo_servico + ' </a></li>';
+                        } else {
+                            div += '<li><a onclick="buscarInfo(' + dados.retorno[i].id + ', $(this));">' + dados.retorno[i].tipo_servico + '</a></li>';
+                        }
                     } else {
-                        div += '<li><a onclick="buscarInfo(' + dados.retorno[i].id + ', $(this));">' + dados.retorno[i].tipo_servico + '</a></li>';
+                        if (i == 0) {
+                            buscarInfo(dados.retorno[i].id);
+                            div += '<li><a class="active" onclick="buscarInfo(' + dados.retorno[i].id + ', $(this));">' + dados.retorno[i].tipo_servico + ' </a></li>';
+                        } else {
+                            div += '<li><a onclick="buscarInfo(' + dados.retorno[i].id + ', $(this));">' + dados.retorno[i].tipo_servico + '</a></li>';
+                        }
                     }
                 }
-
 
 
                 $("#tipo_ajax").html(div);

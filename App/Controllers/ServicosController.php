@@ -6,7 +6,7 @@ use App\Lib\Sessao;
 
 class ServicosController extends Controller {
 
-    public function index() {
+    public function index($parametro) {
         $css = null;
         $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
 // Aqui colocar a paginação da parte de serviços!
@@ -22,7 +22,8 @@ class ServicosController extends Controller {
         $resultado = $bo->listarVetor($tabela, ["*"], null, null, $condicao, $valoresCondicao, $orderBy);
 
         $this->setViewParam('servicos', $resultado);
-
+        $id = (isset($parametro[0]) and is_numeric($parametro[0])) ? $parametro[0] : ' ';
+        $this->setViewParam('id', $id);
 
 
         $this->render("home/servicos", "Serviços", $css, $js, 3);

@@ -24,7 +24,12 @@ class HomeController extends Controller {
 
         $servicos = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 3, null, null, [], "rand()");
         $this->setViewParam('servicos', $servicos);
+        
+        $bo = new \App\Models\BO\ServicosBO();
 
+        $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
+        $this->setViewParam('servicosIndex', $servicosIndex);
+        
         $this->render("home/index", "Início", $css, $js, 3);
     }
 

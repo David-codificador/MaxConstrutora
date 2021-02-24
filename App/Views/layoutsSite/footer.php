@@ -2,15 +2,20 @@
     <div class="up-footer">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-3">
                     <div class="footer-widget">
+
                         <h2>Tags</h2>
-                        <ul class="tag-list">
-                            <li><a href="#">Building</a></li>
-                            <li><a href="#">interior</a></li>
-                            <li><a href="#">isolation</a></li>
-                            <li><a href="#">kitchen</a></li>
-                            <li><a href="#">energy</a></li>
+
+                        <ul class="tag-list">     
+                            <?php
+                            foreach ($viewVar['servicosIndex'] as $item) {
+                                ?> 
+                                <li><a href="<?= LINK ?>servicos/index/<?= $item['id'] ?>"><?= $item['tipo_servico'] ?></a></li>
+                                <?php
+                            }
+                            ?>       
                         </ul>
                     </div>
                 </div>
