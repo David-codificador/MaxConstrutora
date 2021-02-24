@@ -140,7 +140,7 @@
                     ?>
                     <div class="col-md-4">
                         <div class="news-post">
-                            <h2><a href="single-post.html"><?= $item['tipo_servico'] ?></a></h2>
+                            <h2><a href=""><?= $item['tipo_servico'] ?></a></h2>
                             <span></span>
                             <p><?= $item['texto'] ?></p>
                             <a href="single-post.html">CONTINUE LENDO...</a>

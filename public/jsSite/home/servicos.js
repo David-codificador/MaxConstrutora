@@ -24,7 +24,7 @@ function buscarTipo() {
                     }
                 }
 
-                
+
 
                 $("#tipo_ajax").html(div);
             } else {
@@ -44,7 +44,7 @@ buscarTipo();
 
 function buscarInfo(id, elemento) {
     $("#resposta_ajax").text('');
-    
+
     $(".active").removeClass("active");
     $(elemento).addClass("active");
 
