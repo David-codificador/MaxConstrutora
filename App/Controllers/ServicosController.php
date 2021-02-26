@@ -25,6 +25,10 @@ class ServicosController extends Controller {
         $id = (isset($parametro[0]) and is_numeric($parametro[0])) ? $parametro[0] : ' ';
         $this->setViewParam('id', $id);
 
+        // chamar obras no footer
+        $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
+        $this->setViewParam('servicosIndex', $servicosIndex);
+
 
         $this->render("home/servicos", "Serviços", $css, $js, 3);
     }
@@ -199,7 +203,7 @@ class ServicosController extends Controller {
             $servicos = $bo->selecionarVetor($tabela, ['*'], "id = ?", [$id], null);
 
             if ($servicos) {
-                
+
                 $css = '';
                 $js = '';
 
@@ -215,8 +219,8 @@ class ServicosController extends Controller {
             $this->redirect('servicos/listar');
         }
     }
-    
- public function editar($parametro) {
+
+    public function editar($parametro) {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
 
@@ -242,9 +246,9 @@ class ServicosController extends Controller {
             Sessao::gravaMensagem("Acesso incorreto", "As informações enviadas não conrrespondem  ao esperado", 3);
             $this->redirect('servicos/listar');
         }
-    } 
-    
-       public function salvar() {
+    }
+
+    public function salvar() {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
         $id = $_POST['servicos'];
@@ -268,7 +272,7 @@ class ServicosController extends Controller {
             }
 
             $resultado = $bo->editar(\App\Models\Entidades\Servicos::TABELA['nome'], $dados, "id = ?", [$id], 1, \App\Models\Entidades\Servicos::CAMPOSINFO);
-            
+
             if (Sessao::existeMensagem() or $resultado == FALSE) {
                 if (!Sessao::existeMensagem()) {
                     Sessao::gravaMensagem($vetor['descricao'], "Serviço sem edição", 2);
@@ -276,7 +280,7 @@ class ServicosController extends Controller {
 
                 $this->redirect('servicos/listar');
             } else {
-                
+
                 $x = '';
 
                 foreach ($dados as $indice => $value) {
@@ -309,8 +313,7 @@ class ServicosController extends Controller {
 
         $this->redirect('servicos/listar');
     }
-    
-    
+
     public function excluir($parametro) {
         $this->validaAdministrador();
         $this->nivelAcesso(2);
@@ -347,7 +350,7 @@ class ServicosController extends Controller {
 
         $this->redirect('servicos/listar');
     }
-    
+
     public function tipoAjax() {
         $bo = new \App\Models\BO\ServicosBO();
 

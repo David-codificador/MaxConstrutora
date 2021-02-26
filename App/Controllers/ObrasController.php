@@ -15,7 +15,13 @@ class ObrasController extends Controller {
         $obras = $bo->listarVetor(\App\Models\Entidades\Obras::TABELA['nome'], ['*'], null, null, null, [], "id desc");
 
         $this->setViewParam('obras', $obras);
-
+        
+        
+        // chamar obras no footer
+        $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
+        $this->setViewParam('servicosIndex', $servicosIndex);
+        
+        
         $this->render("home/obras", "Obras", $css, $js, 3);
     }
 
