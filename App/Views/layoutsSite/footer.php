@@ -45,7 +45,7 @@
         </div>
     </div>
     <p class="copyright">
-        &copy; Copyright 2016. "Konstrukt" by Nunforest. All rights reserved.
+        &copy; Copyright 2021. "MaxxConstrutora". TODOS OS DIREITOS RESERVADOS.
     </p>
 </footer>
 <!-- End footer -->
