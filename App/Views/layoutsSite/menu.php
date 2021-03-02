@@ -26,14 +26,6 @@
                         <li><a href="<?= LINK ?>servicos">SERVIÇOS</a></li>
                         <li><a href="<?= LINK ?>obras">OBRAS</a></li>  
                         <li><a href="<?= LINK ?>contato">CONTATO</a></li>  
-                        <li class="search drop"><a href="#" class="open-search"><i class="fa fa-search"></i></a>
-                            <form class="form-search">
-                                <input type="search" placeholder="Search:"/>
-                                <button type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </form>
-                        </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->

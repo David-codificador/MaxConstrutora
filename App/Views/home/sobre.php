@@ -9,8 +9,9 @@
                 <div class="second-article">
                     <img src="upload/others/3.jpg" alt="">
                     <h2>QUEM NÓS SOMOS</h2>
-                    <p>A empresa Maxx Construtora foi funda em 2010,... seu fundador foi Maxuel Seabra, e desde então...</p>
-                    <p>Excelencia e Compromisso...</p>
+                    <p>Com mais de 8 anos no mercado a Maxx Construtora proporciona total satisfação aos seus  clientes, atuando em obras de construção civil, meio fio, canaletas, sargetas, boeiros, reservatórios de água, elevatórias de esgoto e rede de esgoto.</p>
+                    <p>Conta com um equipe qualificada, totalmente comprometida para que sejam respeitados os prazos e orçamentos, mantendo de forma precisa o controle total de cada etapa da obra. </p>
+                    <p>Trabalhamos de forma personalizada compreendendo as necessidades de cada cliente, oferecendo todos os recursos necessários com máxima agilidade, segurança e eficiência para a realização de obras de baixa, média e alta complexidade.</p>
                 </div>
             </div>   
             <div class="col-md-4">
