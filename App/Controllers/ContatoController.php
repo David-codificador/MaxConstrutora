@@ -319,7 +319,7 @@ class ContatoController extends Controller {
     public function inserirAjax() {
 
         $bo = new \App\Models\BO\ContatoBO();
-        $vetor = $_REQUEST;
+        $vetor = $_POST;
         $dados = array();
         $campus = \App\Models\Entidades\Contato::CAMPOS;
 
