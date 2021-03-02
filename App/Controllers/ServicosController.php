@@ -25,11 +25,6 @@ class ServicosController extends Controller {
         $id = (isset($parametro[0]) and is_numeric($parametro[0])) ? $parametro[0] : ' ';
         $this->setViewParam('id', $id);
 
-        // chamar obras no footer
-        $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
-        $this->setViewParam('servicosIndex', $servicosIndex);
-
-
         $this->render("home/servicos", "Serviços", $css, $js, 3);
     }
 

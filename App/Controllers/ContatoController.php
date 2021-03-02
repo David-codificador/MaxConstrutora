@@ -9,72 +9,49 @@ class ContatoController extends Controller {
     public function index() {
         $css = null;
         $js = '<script type="text/javascript" src="' . JSSITE . 'script.js"></script>';
-        
-        
-        // chamar obras no footer
-        $bo = new \App\Models\BO\ServicosBO();
-        
-        $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
-        $this->setViewParam('servicosIndex', $servicosIndex);
-
 
         $this->render("home/contato", "Contato", $css, $js, 3);
     }
 
-   // public function inserir() {
-
-        //  $bo = new \App\Models\BO\ContatoBO();
-        //  $vetor = $_REQUEST;
-       //   $dados = array();
-        //  $campus = \App\Models\Entidades\Contato::CAMPOS;
-
-         // Sessao::gravaFormulario($vetor);
-
-      //    $vetor['status'] = 2;
-
-        //  foreach ($vetor as $indice => $valor) {
-          //    if (in_array($indice, $campus)) {
-         //         if ($vetor[$indice] == '') {
-               //       $dados[$indice] = "null";
-            //      } else {
-            //          $dados[$indice] = $vetor[$indice];
-             //     }
-           //   }
-          //}
-
-
-         // $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
-
-
-
-          //if ($id == FALSE) {
-             // Sessao::gravaMensagemSite("Mensagem não enviada!, Tente Novamente.");
-
-             // $this->redirect('contato');
-          //} else {
-
-
-             // $x = '';
-              //foreach ($dados as $indice => $value) {
-                 // if ($value != "null") {
-                    //  $x .= "campo " . \App\Models\Entidades\Contato::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
-                //  }
-             // }
-              //$info = [
-                //  'tipo' => 1,
-                 // 'campos' => $x,
-                 // 'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
-                //  'descricao' => 'O Internauta efetuou o cadastro de um novo Contato'
-              //];
-
-             // $this->inserirAuditoria($info);
-
-             // Sessao::limpaFormulario();
-             // Sessao::gravaMensagemSite("Contato enviado");
-
-            //  $this->redirect('contato');
-         // }
-     // }
+    // public function inserir() {
+    //  $bo = new \App\Models\BO\ContatoBO();
+    //  $vetor = $_REQUEST;
+    //   $dados = array();
+    //  $campus = \App\Models\Entidades\Contato::CAMPOS;
+    // Sessao::gravaFormulario($vetor);
+    //    $vetor['status'] = 2;
+    //  foreach ($vetor as $indice => $valor) {
+    //    if (in_array($indice, $campus)) {
+    //         if ($vetor[$indice] == '') {
+    //       $dados[$indice] = "null";
+    //      } else {
+    //          $dados[$indice] = $vetor[$indice];
+    //     }
+    //   }
+    //}
+    // $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
+    //if ($id == FALSE) {
+    // Sessao::gravaMensagemSite("Mensagem não enviada!, Tente Novamente.");
+    // $this->redirect('contato');
+    //} else {
+    // $x = '';
+    //foreach ($dados as $indice => $value) {
+    // if ($value != "null") {
+    //  $x .= "campo " . \App\Models\Entidades\Contato::CAMPOSINFO[$indice]['descricao'] . ": " . $value . "<br>";
+    //  }
+    // }
+    //$info = [
+    //  'tipo' => 1,
+    // 'campos' => $x,
+    // 'tabela' => \App\Models\Entidades\Contato::TABELA['descricao'],
+    //  'descricao' => 'O Internauta efetuou o cadastro de um novo Contato'
+    //];
+    // $this->inserirAuditoria($info);
+    // Sessao::limpaFormulario();
+    // Sessao::gravaMensagemSite("Contato enviado");
+    //  $this->redirect('contato');
+    // }
+    // }
 
     public function listar($parametro) {
         $this->validaAdministrador();

@@ -10,7 +10,7 @@
 
                         <ul class="tag-list">     
                             <?php
-                            foreach ($viewVar['servicosIndex'] as $item) {
+                            foreach ($servicosIndex as $item) {
                                 ?> 
                                 <li><a href="<?= LINK ?>servicos/index/<?= $item['id'] ?>"><?= $item['tipo_servico'] ?></a></li>
                                 <?php

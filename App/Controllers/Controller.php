@@ -44,6 +44,11 @@ abstract class Controller {
             require_once PATH . '/App/Views/' . $view . '.php';
             require_once PATH . '/App/Views/layouts/footer.php';
         } else {
+            
+            $bo = new \App\Models\BO\ServicosBO();
+            
+            $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
+            
 
             $arquivoCSS = '<link href="' . CSSSITE . 'style.css" type="text/css" rel="stylesheet"/>';
 
@@ -163,24 +168,24 @@ abstract class Controller {
         $ext = strtolower(strrchr($arquivo['name'], "."));
 
         if ($ext != '') {
-            if(count($tipo) > 0) {
+            if (count($tipo) > 0) {
                 if (!in_array($ext, $tipo)) {
                     return false;
                 }
             }
-            
-            if($tamanho < $arquivo['size'] / 1000000){
+
+            if ($tamanho < $arquivo['size'] / 1000000) {
                 return false;
             }
-            
+
             $nome = $nome . $ext;
-            
+
             move_uploaded_file($arquivo['tmp_name'], $caminho . $nome);
-            
-            if(file_exists($caminho . $nome)){
+
+            if (file_exists($caminho . $nome)) {
                 return $nome;
             }
-            
+
             return false;
         } else {
             return false;
