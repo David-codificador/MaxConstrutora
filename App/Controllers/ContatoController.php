@@ -366,6 +366,7 @@ class ContatoController extends Controller {
             echo json_encode($retorno);
         } else {
 
+            $this->enviar_email();
 
             $x = '';
             foreach ($dados as $indice => $value) {
