@@ -335,6 +335,14 @@ class ContatoController extends Controller {
             }
         }
 
+        if (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
+            $retorno = [
+                'status' => '0',
+                'msg' => 'Email digitado inválido!'
+            ];
+            echo json_encode($retorno);
+            exit();
+        }
 
         $id = $bo->inserir(\App\Models\Entidades\Contato::TABELA['nome'], $dados, \App\Models\Entidades\Contato::CAMPOSINFO);
 
