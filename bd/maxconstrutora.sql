@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Fev-2021 às 13:11
+-- Tempo de geração: 05-Mar-2021 às 02:52
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -272,7 +272,85 @@ INSERT INTO `auditoria` (`id`, `tipo`, `administrador`, `tabela`, `campos`, `des
 (251, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-17 13:38:38', '::1'),
 (252, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-17 14:30:34', '::1'),
 (253, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-17 14:36:47', '::1'),
-(254, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-17 18:35:48', '::1');
+(254, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-17 18:35:48', '::1'),
+(255, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 15:03:00', '::1'),
+(256, 1, 1, NULL, 'campo Nome Serviço: Construção Civil<br>campo Título: Construção Civil<br>campo Texto: <p><strong>Constru&ccedil;&atilde;o civil &eacute; o</strong>&nbsp;termo que engloba a confec&ccedil;&atilde;o de&nbsp;<strong>obras</strong>&nbsp;como casas, edif&iacute;cios, pontes, barragens, funda&ccedil;&otilde;es de m&aacute;quinas, estradas, aeroportos&nbsp;<strong>e</strong>&nbsp;outras infraestruturas, onde participam engenheiros civis&nbsp;<strong>e</strong>&nbsp;arquitetos em colabora&ccedil;&atilde;o com especialistas&nbsp;<strong>e</strong>&nbsp;t&eacute;cnicos de outras disciplinas.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:18:43', '::1'),
+(257, 1, 1, NULL, 'campo Nome Serviço: Rede Pluvial<br>campo Título: Rede Pluvial<br>campo Texto: <p>O&nbsp;<strong>esgoto pluvial</strong>, que coleta a &aacute;gua da chuva &eacute; direcionado para as galerias&nbsp;<strong>pluviais</strong>, que s&atilde;o os sistemas de dutos subterr&acirc;neos destinados &agrave; capta&ccedil;&atilde;o e escoamento das &aacute;guas&nbsp;<strong>pluviais</strong>&nbsp;coletadas pelas bocas coletoras ou sarjetas.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:21:54', '::1'),
+(258, 1, 1, NULL, 'campo Nome Serviço: Meio Fio<br>campo Título: Meio Fio<br>campo Texto: <p>O&nbsp;<strong>meio fio</strong>&nbsp;de concreto, mais conhecido por &ldquo;<strong>meio fio</strong>&rdquo;, se refere &agrave;s bordas de cal&ccedil;adas e/ou passeios que est&atilde;o desnivelados em rela&ccedil;&atilde;o &agrave; cal&ccedil;ada de pedestres e o pavimento onde passam os carros. De maneira simplificada, podemos definir o&nbsp;<strong>meio</strong>-<strong>fio</strong>&nbsp;como a &ldquo;borda&rdquo; da cal&ccedil;ada.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:23:41', '::1'),
+(259, 1, 1, NULL, 'campo Nome Serviço: Sarjeta<br>campo Título: Sarjeta<br>campo Texto: <p>As&nbsp;<strong>sarjetas</strong>&nbsp;s&atilde;o canais longitudinais que acompanham o sentido das vias e s&atilde;o destinados a coletar e conduzir as &aacute;guas superficiais da faixa pavimentada e da faixa de passeio at&eacute; o dispositivo de drenagem, boca de lobo, galeria etc.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:24:45', '::1'),
+(260, 1, 1, NULL, 'campo Nome Serviço: Rede Esgoto<br>campo Título: Rede Esgoto<br>campo Texto: <p>A&nbsp;<strong>rede</strong>&nbsp;de&nbsp;<strong>esgoto</strong>&nbsp;&eacute; um conjunto de tubula&ccedil;&otilde;es que transporta o&nbsp;<strong>esgoto</strong>&nbsp;para as esta&ccedil;&otilde;es de tratamento, onde essa &aacute;gua residual fica livre de poluentes para retornar aos corpos h&iacute;dricos, como rios e mares.&nbsp;</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:26:42', '::1'),
+(261, 1, 1, NULL, 'campo Nome Serviço: Boeiros<br>campo Título: Boeiros<br>campo Texto: <p><strong>Bueiro</strong>, boca-de-lobo, boca de lobo, sumidouro, sumidoiro ou sarjeta &eacute; a vala geralmente localizada ao longo das vias pavimentadas para onde escoam as &aacute;guas da chuva drenadas pelas sarjetas com destino &agrave;s galerias pluviais.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:27:28', '::1'),
+(262, 1, 1, NULL, 'campo Nome Serviço: Canaletas<br>campo Título: Canaletas<br>campo Texto: <p>Os blocos&nbsp;<strong>canaletas</strong>&nbsp;s&atilde;o artefatos de concreto, n&atilde;o armados, que tem como fun&ccedil;&atilde;o auxiliar o escoamento de &aacute;guas pluviais em &aacute;reas abertas nos mais diversos volumes.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:28:16', '::1'),
+(263, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 15:39:16', '::1'),
+(264, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 15:40:53', '::1'),
+(265, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 15:47:44', '::1'),
+(266, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 15:47:52', '::1'),
+(267, 2, 1, 'Serviços', 'campo Texto editado de: \"<p>As&nbsp;<strong>sarjetas</strong>&nbsp;s&atilde;o canais longitudinais que acompanham o sentido das vias e s&atilde;o destinados a coletar e conduzir as &aacute;guas superficiais da faixa pavimentada e da faixa de passeio at&eacute; o dispositivo de drenagem, boca de lobo, galeria etc.</p>\r\n\" para \"<p>As <strong>Sarjetas</strong> são canais longitudinais que acompanham o sentido das vias e são destinados a coletar e conduzir as águas superficiais da faixa pavimentada e da faixa de passeio até o dispositivo de drenagem, boca de lobo, galeria etc.</p>\r\n\"<br>', 'O  David Natan , efetuou a edição das informações de um Serviço.', '2021-02-22 15:48:09', '::1'),
+(268, 1, 1, NULL, 'campo Nome Serviço: teste<br>campo Título: Banner 2<br>campo Texto: <p>kfghhgfhgfgfhg</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:51:02', '::1'),
+(269, 1, 1, 'Serviços', 'campo Nome Serviço: dadasd<br>campo Título: dasds<br>campo Texto: <p>dads</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 15:53:02', '::1'),
+(270, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 15:58:03', '::1'),
+(271, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 15:58:57', '::1'),
+(272, 4, 1, 'Serviços', '-', 'O  David Natan , efetuou a exclusão de um serviço teste', '2021-02-22 15:59:05', '::1'),
+(273, 4, 1, 'Serviços', '-', 'O  David Natan , efetuou a exclusão de um serviço dadasd', '2021-02-22 15:59:19', '::1'),
+(274, 1, 1, 'Serviços', 'campo Nome Serviço: Meio Fiodadasdasd<br>campo Título: dadasd<br>campo Texto: <p>dadasd</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-22 16:03:51', '::1'),
+(275, 4, 1, 'Serviços', '-', 'O  David Natan , efetuou a exclusão de um serviço Meio Fiodadasdasd', '2021-02-22 16:04:06', '::1'),
+(276, 2, 1, 'Banner', 'campo Título editado de: \"Construção \" para \"Construção Civil\"<br>campo Sub Título editado de: \"Teste 1\" para \"Trabalho concluido é aquele que termina no aconchego do lar.\"<br>campo Link editado de: \"a\" para \"*\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 16:52:17', '::1'),
+(277, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 16:52:22', '::1'),
+(278, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 16:52:58', '::1'),
+(279, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 16:58:02', '::1'),
+(280, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 16:58:12', '::1'),
+(281, 2, 1, 'Banner', 'campo Sub Título editado de: \"Trabalho concluido é aquele que termina no aconchego do lar.\" para \"Da Fundação ao Acabamento.\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 16:59:56', '::1'),
+(282, 2, 1, 'Banner', 'campo Sub Título editado de: \"Construção, Rede Pluvial e Obras Gerais\" para \"rede pluvial evita danos na infraestrutura pública\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 17:02:07', '::1'),
+(283, 2, 1, 'Banner', 'campo Sub Título editado de: \"rede pluvial evita danos na infraestrutura pública\" para \"Evita danos na infraestrutura pública\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 17:02:40', '::1'),
+(284, 2, 1, 'Banner', 'campo Sub Título editado de: \"Evita danos na infraestrutura pública\" para \"Evita danos na infraestrutura pública.\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 17:02:46', '::1'),
+(285, 2, 1, 'Banner', 'campo Sub Título editado de: \"Evita danos na infraestrutura pública.\" para \"Evite danos na infraestrutura pública.\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 17:03:37', '::1'),
+(286, 2, 1, 'Banner', 'campo Sub Título editado de: \"Cheque Mate\" para \"Meio Fio\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 17:08:03', '::1'),
+(287, 2, 1, 'Banner', 'campo Sub Título editado de: \"Meio Fio\" para \"Meio Fio deixa as ruas Seguras!\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-22 17:09:45', '::1'),
+(288, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 17:14:45', '::1'),
+(289, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 17:22:47', '::1'),
+(290, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 17:24:47', '::1'),
+(291, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-22 17:26:08', '::1'),
+(292, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-22 17:26:11', '::1'),
+(293, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-23 21:05:13', '::1'),
+(294, 2, 1, 'Banner', 'campo Titulo do Link editado de: \"Continue a Jornada\" para \"Continue a Jornada!\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-23 21:05:36', '::1'),
+(295, 2, 1, 'Banner', 'campo Link editado de: \"hdasdd\" para \"*\"<br>campo Titulo do Link editado de: \"dadsda\" para \"Continue a Jornada!\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-23 21:05:50', '::1'),
+(296, 2, 1, 'Banner', 'campo Titulo do Link editado de: \"David\" para \" Voltar para o primeiro slide!\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-02-23 21:09:21', '::1'),
+(297, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-23 21:15:36', '::1'),
+(298, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-23 21:18:44', '::1'),
+(299, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-23 21:19:05', '::1'),
+(300, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-23 21:50:32', '::1'),
+(301, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-23 21:50:37', '::1'),
+(302, 1, NULL, 'Contato', 'campo Nome: David Natan Seabra<br>campo Telefone: 62 99813-1151<br>campo Email: natan_seabra@hotmail.com<br>campo Assunto: Teste<br>campo Status: 2<br>', 'O Internauta efetuou o cadastro de um novo Contato', '2021-02-24 19:15:49', '::1'),
+(303, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-24 19:15:55', '::1'),
+(304, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-24 19:16:11', '::1'),
+(305, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-24 19:21:06', '::1'),
+(306, 1, 1, 'Serviços', 'campo Nome Serviço: Reservatório de Agua<br>campo Título: Reservatório de Agua<br>campo Texto: <p>Teste.</p>\r\n<br>', 'O  David Natan , efetuou o cadastro de um novo Servico', '2021-02-24 19:22:37', '::1'),
+(307, 2, 1, 'Serviços', 'campo Nome Serviço editado de: \"Reservatório de Agua\" para \"Reservatório\"<br>', 'O  David Natan , efetuou a edição das informações de um Serviço.', '2021-02-24 19:23:38', '::1'),
+(308, 1, 1, 'Obras', 'campo Categoria: Construção civil<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/obras/24_02_2021_07_24_55_866.jpeg\" style=\"width: 100%\">', 'O  David Natan , efetuou o cadastro de um nova obra.', '2021-02-24 19:24:55', '::1'),
+(309, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-02-24 19:29:55', '::1'),
+(310, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-02-24 19:31:08', '::1'),
+(311, 2, 1, 'Obras', 'campo Categoria editado de: \"Construção civil\" para \"Reservatório\"<br>', 'O  David Natan , efetuou a edição das informações de uma Obra.', '2021-02-24 19:31:22', '::1'),
+(312, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-03-02 15:47:44', '::1'),
+(313, 2, 1, 'Serviços', 'campo Texto editado de: \"<p>Teste.</p>\r\n\" para \"<p>O reservatório de água de concreto é uma construção bastante eficiente e cada vez mais procurada para instalação em diversos locais, principalmente aqueles que necessitam de um grande provimento de água no seu cotidiano, por exemplo, indústrias, condomínios e entre outros.</p>\r\n\"<br>', 'O  David Natan , efetuou a edição das informações de um Serviço.', '2021-03-02 15:48:02', '::1'),
+(314, 1, NULL, 'Contato', 'campo Nome: dadasd<br>campo Telefone: dads<br>campo Email: warren.castro@hotmail.com<br>campo Assunto: dasdsd<br>campo Status: 2<br>', 'O Internauta efetuou o cadastro de um novo Contato', '2021-03-03 21:42:00', '::1'),
+(315, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-03-03 22:01:25', '::1'),
+(316, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/15_02_2021_07_30_31_172.png\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_01_36_157.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:01:36', '::1'),
+(317, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-03-03 22:11:16', '::1'),
+(318, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-03-03 22:15:21', '::1'),
+(319, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/12_02_2021_10_11_41_135.jpeg\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_15_33_150.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:15:33', '::1'),
+(320, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/14_02_2021_08_56_47_144.jpg\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_21_04_136.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:21:05', '::1'),
+(321, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_01_36_157.jpg\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_22_30_202.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:22:30', '::1'),
+(322, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_22_30_202.jpg\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_22_37_132.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:22:37', '::1'),
+(323, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_22_37_132.jpg\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_22_42_133.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:22:42', '::1'),
+(324, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-03-03 22:28:21', '::1'),
+(325, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-03-03 22:30:06', '::1'),
+(326, 2, 1, 'Banner', 'campo imagem editado de:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_21_04_136.jpg\" /><br>para:<br><img src=\"http://localhost/MaxConstrutora//public/imagemSite/banner/03_03_2021_10_30_22_214.jpg\" /><br>', 'O  David Natan , efetuou a edição da imagem do banner(a) ', '2021-03-03 22:30:22', '::1'),
+(327, 2, 1, 'Banner', 'campo Título editado de: \"Meio Fio\" para \"Boeiro\"<br>campo Sub Título editado de: \"Meio Fio deixa as ruas Seguras!\" para \"Construção de Boeiros\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-03-03 22:31:13', '::1'),
+(328, 2, 1, 'Banner', 'campo Título editado de: \"Boeiro\" para \"Boeiros\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-03-03 22:31:25', '::1'),
+(329, 5, 1, 'administrador', NULL, 'O Administrador David Natan  acessou o sistema!', '2021-03-04 22:50:30', '::1'),
+(330, 2, 1, 'Banner', 'campo Sub Título editado de: \"Da Fundação ao Acabamento.\" para \"Da fundação ao acabamento.\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-03-04 22:50:41', '::1'),
+(331, 2, 1, 'Banner', 'campo Sub Título editado de: \"Evite danos na infraestrutura pública.\" para \"Rede Pluvial\"<br>', 'O  David Natan , efetuou a edição das informações de um(a) banner(a).', '2021-03-04 22:51:09', '::1'),
+(332, 5, 1, 'administrador', NULL, 'O Administrador  saiu do sistema!', '2021-03-04 22:51:46', '::1');
 
 -- --------------------------------------------------------
 
@@ -296,9 +374,9 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `imagem`, `titulo`, `sub_titulo`, `link`, `titulo_link`, `status`, `administrador_id`) VALUES
-(3, '15_02_2021_07_30_31_172.png', 'Construção ', 'Teste 1', 'a', 'Continue a Jornada', 1, 1),
-(4, '12_02_2021_10_11_41_135.jpeg', 'Rede Pluvial', 'Construção, Rede Pluvial e Obras Gerais', 'hdasdd', 'dadsda', 1, 1),
-(7, '14_02_2021_08_56_47_144.jpg', 'Meio Fio', 'Cheque Mate', '*', 'David', 1, 1);
+(3, '03_03_2021_10_22_42_133.jpg', 'Construção Civil', 'Da fundação ao acabamento.', '*', 'Continue a Jornada!', 1, 1),
+(4, '03_03_2021_10_15_33_150.jpg', 'Rede Pluvial', 'Rede Pluvial', '*', 'Continue a Jornada!', 1, 1),
+(7, '03_03_2021_10_30_22_214.jpg', 'Boeiros', 'Construção de Boeiros', '*', ' Voltar para o primeiro slide!', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -314,6 +392,14 @@ CREATE TABLE `contato` (
   `assunto` text NOT NULL,
   `status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `contato`
+--
+
+INSERT INTO `contato` (`id`, `nome`, `telefone`, `email`, `assunto`, `status`) VALUES
+(1, 'David Natan Seabra', '62 99813-1151', 'natan_seabra@hotmail.com', 'Teste', 1),
+(2, 'dadasd', 'dads', 'warren.castro@hotmail.com', 'dasdsd', 2);
 
 -- --------------------------------------------------------
 
@@ -338,7 +424,8 @@ CREATE TABLE `obras` (
 INSERT INTO `obras` (`id`, `imagem`, `titulo`, `sub_titulo`, `categoria`, `data_cadastro`, `administrador_id`) VALUES
 (8, '16_02_2021_11_24_52_815.jpeg', NULL, NULL, '2', '2021-02-16 11:24:52', 1),
 (9, '16_02_2021_11_25_19_518.jpeg', NULL, NULL, '4', '2021-02-16 11:25:19', 1),
-(11, '16_02_2021_11_36_11_420.jpeg', NULL, NULL, '4', '2021-02-16 11:36:11', 1);
+(11, '16_02_2021_11_36_11_420.jpeg', NULL, NULL, '4', '2021-02-16 11:36:11', 1),
+(12, '24_02_2021_07_24_55_866.jpeg', NULL, NULL, '6', '2021-02-24 19:24:55', 1);
 
 -- --------------------------------------------------------
 
@@ -381,8 +468,14 @@ CREATE TABLE `servicos` (
 --
 
 INSERT INTO `servicos` (`id`, `tipo_servico`, `titulo`, `texto`, `administrador_id`) VALUES
-(0, 'Meio Fio', 'Banner 3', '<p>dsada</p>\r\n', 1),
-(1, 'teste', 'Rede Pluvial', '<p>dsadada</p>\r\n', 1);
+(4, 'Construção Civil', 'Construção Civil', '<p><strong>Constru&ccedil;&atilde;o civil &eacute; o</strong>&nbsp;termo que engloba a confec&ccedil;&atilde;o de&nbsp;<strong>obras</strong>&nbsp;como casas, edif&iacute;cios, pontes, barragens, funda&ccedil;&otilde;es de m&aacute;quinas, estradas, aeroportos&nbsp;<strong>e</strong>&nbsp;outras infraestruturas, onde participam engenheiros civis&nbsp;<strong>e</strong>&nbsp;arquitetos em colabora&ccedil;&atilde;o com especialistas&nbsp;<strong>e</strong>&nbsp;t&eacute;cnicos de outras disciplinas.</p>\r\n', 1),
+(5, 'Rede Pluvial', 'Rede Pluvial', '<p>O&nbsp;<strong>esgoto pluvial</strong>, que coleta a &aacute;gua da chuva &eacute; direcionado para as galerias&nbsp;<strong>pluviais</strong>, que s&atilde;o os sistemas de dutos subterr&acirc;neos destinados &agrave; capta&ccedil;&atilde;o e escoamento das &aacute;guas&nbsp;<strong>pluviais</strong>&nbsp;coletadas pelas bocas coletoras ou sarjetas.</p>\r\n', 1),
+(6, 'Meio Fio', 'Meio Fio', '<p>O&nbsp;<strong>meio fio</strong>&nbsp;de concreto, mais conhecido por &ldquo;<strong>meio fio</strong>&rdquo;, se refere &agrave;s bordas de cal&ccedil;adas e/ou passeios que est&atilde;o desnivelados em rela&ccedil;&atilde;o &agrave; cal&ccedil;ada de pedestres e o pavimento onde passam os carros. De maneira simplificada, podemos definir o&nbsp;<strong>meio</strong>-<strong>fio</strong>&nbsp;como a &ldquo;borda&rdquo; da cal&ccedil;ada.</p>\r\n', 1),
+(7, 'Sarjeta', 'Sarjeta', '<p>As <strong>Sarjetas</strong> são canais longitudinais que acompanham o sentido das vias e são destinados a coletar e conduzir as águas superficiais da faixa pavimentada e da faixa de passeio até o dispositivo de drenagem, boca de lobo, galeria etc.</p>\r\n', 1),
+(8, 'Rede Esgoto', 'Rede Esgoto', '<p>A&nbsp;<strong>rede</strong>&nbsp;de&nbsp;<strong>esgoto</strong>&nbsp;&eacute; um conjunto de tubula&ccedil;&otilde;es que transporta o&nbsp;<strong>esgoto</strong>&nbsp;para as esta&ccedil;&otilde;es de tratamento, onde essa &aacute;gua residual fica livre de poluentes para retornar aos corpos h&iacute;dricos, como rios e mares.&nbsp;</p>\r\n', 1),
+(9, 'Boeiros', 'Boeiros', '<p><strong>Bueiro</strong>, boca-de-lobo, boca de lobo, sumidouro, sumidoiro ou sarjeta &eacute; a vala geralmente localizada ao longo das vias pavimentadas para onde escoam as &aacute;guas da chuva drenadas pelas sarjetas com destino &agrave;s galerias pluviais.</p>\r\n', 1),
+(10, 'Canaletas', 'Canaletas', '<p>Os blocos&nbsp;<strong>canaletas</strong>&nbsp;s&atilde;o artefatos de concreto, n&atilde;o armados, que tem como fun&ccedil;&atilde;o auxiliar o escoamento de &aacute;guas pluviais em &aacute;reas abertas nos mais diversos volumes.</p>\r\n', 1),
+(14, 'Reservatório', 'Reservatório de Agua', '<p>O reservatório de água de concreto é uma construção bastante eficiente e cada vez mais procurada para instalação em diversos locais, principalmente aqueles que necessitam de um grande provimento de água no seu cotidiano, por exemplo, indústrias, condomínios e entre outros.</p>\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -515,7 +608,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de tabela `auditoria`
 --
 ALTER TABLE `auditoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=333;
 
 --
 -- AUTO_INCREMENT de tabela `banner`
@@ -527,13 +620,13 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de tabela `contato`
 --
 ALTER TABLE `contato`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `obras`
 --
 ALTER TABLE `obras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `permissao`
@@ -545,7 +638,7 @@ ALTER TABLE `permissao`
 -- AUTO_INCREMENT de tabela `servicos`
 --
 ALTER TABLE `servicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_administrador`
