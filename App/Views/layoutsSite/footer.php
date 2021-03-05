@@ -45,7 +45,7 @@
         </div>
     </div>
     <p class="copyright">
-        &copy; Copyright 2021. "MaxxConstrutora". TODOS OS DIREITOS RESERVADOS.
+        &copy; Copyright <?= date("Y") ?>. "MaxxConstrutora". TODOS OS DIREITOS RESERVADOS.
     </p>
 </footer>
 <!-- End footer -->

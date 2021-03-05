@@ -44,11 +44,11 @@ abstract class Controller {
             require_once PATH . '/App/Views/' . $view . '.php';
             require_once PATH . '/App/Views/layouts/footer.php';
         } else {
-            
+
             $bo = new \App\Models\BO\ServicosBO();
-            
+
             $servicosIndex = $bo->listarVetor(\App\Models\Entidades\Servicos::TABELA['nome'], ['*'], 6, null, null, [], "rand()");
-            
+
 
             $arquivoCSS = '<link href="' . CSSSITE . 'style.css" type="text/css" rel="stylesheet"/>';
 
@@ -84,8 +84,20 @@ abstract class Controller {
         }
     }
 
-    public function enviar_email() {
-        
+    public function enviar_email($corpoEmail, $assunto, $destino, $usuario = "Internauta", $emailEnvio = EMAIL) {
+
+        // É necessário indicar que o formato do e-mail é html
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From:' . $usuario . ' <' . $emailEnvio . '>';
+        //$headers .= "Bcc: $EmailPadrao\r\n";
+
+        $enviaremail = mail($destino, $assunto, $corpoEmail, $headers);
+        if ($enviaremail) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function remover_caracter($string) {

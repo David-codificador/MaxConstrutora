@@ -366,7 +366,58 @@ class ContatoController extends Controller {
             echo json_encode($retorno);
         } else {
 
-            $this->enviar_email();
+            $corpoEmail = " 
+                 <style type='text/css'>
+
+                   *{
+                      margin: 0;
+                    }
+
+                    img {
+                       width: 150px;
+                       margin: 10px;
+                     }
+
+                    .corpo{
+                      width: 100%;
+                      background-color: #f1f1f1;
+                      text-align: center;
+                      font-family: arial;
+                      padding: 20px;
+                    }
+
+                    h1{
+                      color: #610a0a;
+                    }
+
+                    h2{
+                      margin: 5px;
+                    }
+
+                    p{
+                       color: #838383
+                    }
+                </style>
+                <html>
+                     <div class='corpo'>
+                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStacH0xkaYdiC9AKpSsT4CQPfA4w1oVIikOg&usqp=CAU'/>
+                        <h1>Contato recebido pelo site</h1>
+                        <h2>Nome: ".$dados['nome']."</h2>
+                        <h2>Telefone: ".$dados['telefone']."</h2>
+                        <h2>Email: ".$dados['email']."</h2>
+                        <h2>Assunto: ".$dados['assunto']."</h2>
+                        <p>Contato enviado em ".date('d/m/Y')." as ".date('H:i:s')."</p>
+                     </div>
+                </html>
+     
+            ";
+            
+            $assunto = "Contato pelo Site";
+            $destino = "maxuel@maxxconstrutora.com.br";
+            $usuario = $dados['nome'];
+            $emailEnvio = $dados['email'];
+            
+            $this->enviar_email($corpoEmail, $assunto, $destino, $usuario, $emailEnvio);
 
             $x = '';
             foreach ($dados as $indice => $value) {
