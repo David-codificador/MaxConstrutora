@@ -15,7 +15,7 @@
                 <ul class="information-list">
                     <li><i class="fa fa-map-marker"></i><span>Ceres-GO</span></li>
                     <li><i class="fa fa-whatsapp"></i><span>(62) 98475- 5437 </span><span>(62) 99623 - 5304</span></li>
-                    <li><i class="fa fa-envelope-o"></i><a href="#">maxuel@maxxconstrutora.com.br</a></li>
+                    <li><i class="fa fa-envelope-o"></i><a href="mailto:maxuel@maxxconstrutora.com.br">maxuel@maxxconstrutora.com.br</a></li>
                 </ul>						
             </div>
         </div>
