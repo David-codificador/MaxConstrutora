@@ -15,9 +15,9 @@ class App {
 
     public function __construct() {
         define('TITLESITE',          "Maxx");
-        define('APP_HOST',           $_SERVER['HTTP_HOST'] . "/MaxConstrutora");
+        define('APP_HOST',           $_SERVER['HTTP_HOST'] . "");
         define('PATH',               realpath('./'));
-        define('LINK',               'http://' . APP_HOST . '/');
+        define('LINK',               'https://' . APP_HOST . '/');
         define('RECURSO',            LINK . '/public/');
         define('EMAIL',              "maxuel@maxxconstrutora.com.br");
         
@@ -31,10 +31,16 @@ class App {
         define('JSSITE',             RECURSO . 'jsSite/');
         define('IMAGEMSITE',         RECURSO . 'imagemSite/');
 
+        //define('DB_HOST',            "localhost");
+        //define('DB_USER',            "root");
+        //define('DB_PASSWORD',        "");
+        //define('DB_NAME',            "maxconstrutora");
+
         define('DB_HOST',            "localhost");
-        define('DB_USER',            "root");
-        define('DB_PASSWORD',        "");
-        define('DB_NAME',            "maxconstrutora");
+        define('DB_USER',            "maxx_user");
+        define('DB_PASSWORD',        "NLl;HCpcCBB5");
+        define('DB_NAME',            "maxx_construtora_bd");
+		
 
         $this->url();
     }
