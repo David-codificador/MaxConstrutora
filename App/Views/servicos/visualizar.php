@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            <label>Região do Serviços</label>
+                                            <label>Titulo</label>
                                             <p><?= $viewVar['item']['titulo'] ?></p>
                                         </div>
                                     </div>
