@@ -35,7 +35,7 @@
                     <div class="footer-widget info-widget">
                         <h2>INFORMAÇÕES</h2>
                         <p class="first-par">Entre em contato conosco!. Retornaremos o mais breve possível.</p>
-                        <p><span>Tel: </span> 1234 - 5678 - 9012</p>
+                        <p><span>Tel: </span> (62) 99623 - 5304</p>
                         <p><span>Email: </span> maxuel@maxxconstrutora.com.br</p>
                         <p><span>Horário de Trabalho: </span> 7:00 a.m - 18:00 p.m</p>
                         <p><span>Acesso Restrito: </span><a href="<?= LINK ?>administrador/" target="_blank">Login</a> </p>
